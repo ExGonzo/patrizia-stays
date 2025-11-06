@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrizia Stays - Luxury Apartments in Sharm El Sheikh</title>
+    <meta name="description" content="Experience luxury living in Sharm El Sheikh with Patrizia Stays. Premium apartments, excursions, dining, and unforgettable experiences.">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body class="home">
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">Patrizia Stays</a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="navbar-nav" id="navbarNav">
+                <li><a href="index.html" class="nav-link active" data-en="Home" data-it="Casa">Home</a></li>
+                <li><a href="apartments.html" class="nav-link" data-en="Apartments" data-it="Appartamenti">Apartments</a></li>
+                <li><a href="excursions.html" class="nav-link" data-en="Excursions" data-it="Escursioni">Excursions</a></li>
+                <li><a href="dining.html" class="nav-link" data-en="Dining" data-it="Ristorazione">Dining</a></li>
+                <li><a href="to-visit.html" class="nav-link" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></li>
+                <li><a href="reservation.html" class="nav-link" data-en="Book Now" data-it="Prenota Ora">Book Now</a></li>
+            </ul>
+            
+            <div class="language-switcher" id="languageSwitcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="it">IT</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title" data-en="Welcome to Patrizia Stays" data-it="Benvenuti a Patrizia Stays">Welcome to Patrizia Stays</h1>
+            <p class="hero-subtitle" data-en="Experience luxury living in the heart of Sharm El Sheikh with our premium apartments and unforgettable experiences." data-it="Vivi il lusso nel cuore di Sharm El Sheikh con i nostri appartamenti premium e esperienze indimenticabili.">
+                Experience luxury living in the heart of Sharm El Sheikh with our premium apartments and unforgettable experiences.
+            </p>
+            <div class="hero-buttons">
+                <a href="reservation.html" class="btn btn-secondary" data-en="Book Now" data-it="Prenota Ora">
+                    <i class="fas fa-calendar"></i> Book Now
+                </a>
+            </div>
+        </div>
+    </section>
+
+    
+
+    <!-- Featured Apartments -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-en="Featured Apartments" data-it="Appartamenti in Evidenza">Featured Apartments</h2>
+            <div class="grid grid-3" id="featuredApartments">
+                <!-- Apartments will be loaded dynamically -->
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Explore Apartments CTA placed below Featured Apartments -->
+    <div class="container">
+        <div class="text-center mt-4">
+            <a href="apartments.html" class="btn btn-primary" data-en="Explore Apartments" data-it="Esplora Appartamenti">
+                <i class="fas fa-home"></i> Explore Apartments
+            </a>
+        </div>
+    </div>
+
+    <!-- Quick Actions -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-en="Discover Sharm El Sheikh" data-it="Scopri Sharm El Sheikh">Discover Sharm El Sheikh</h2>
+            <div class="grid grid-3">
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-water fa-3x text-primary mb-3"></i>
+                        <h3 data-en="Water Activities" data-it="Attività Acquatiche">Water Activities</h3>
+                        <p data-en="Snorkeling, diving, and boat excursions in the Red Sea" data-it="Snorkeling, immersioni ed escursioni in barca nel Mar Rosso">
+                            Snorkeling, diving, and boat excursions in the Red Sea
+                        </p>
+                        <a href="excursions.html" class="btn btn-outline" data-en="Explore" data-it="Esplora">Explore</a>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-utensils fa-3x text-secondary mb-3"></i>
+                        <h3 data-en="Dining Experience" data-it="Esperienza Gastronomica">Dining Experience</h3>
+                        <p data-en="Authentic Italian cuisine and local Egyptian flavors" data-it="Cucina italiana autentica e sapori egiziani locali">
+                            Authentic Italian cuisine and local Egyptian flavors
+                        </p>
+                        <a href="dining.html" class="btn btn-outline" data-en="Discover" data-it="Scopri">Discover</a>
+                    </div>
+                </div>
+                
+                <div class="card text-center">
+                    <div class="card-body">
+                        <i class="fas fa-mountain fa-3x text-accent mb-3"></i>
+                        <h3 data-en="Desert Adventures" data-it="Avventure nel Deserto">Desert Adventures</h3>
+                        <p data-en="Camel rides, quad biking, and Bedouin experiences" data-it="Cavalcate su cammelli, quad e esperienze beduine">
+                            Camel rides, quad biking, and Bedouin experiences
+                        </p>
+                        <a href="excursions.html" class="btn btn-outline" data-en="Book Now" data-it="Prenota Ora">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2">
+                <div>
+                    <h2 data-en="Why Choose Patrizia Stays?" data-it="Perché Scegliere Patrizia Stays?">Why Choose Patrizia Stays?</h2>
+                    <p data-en="Patrizia Stays offers a unique blend of Italian hospitality and Egyptian charm. Our carefully selected apartments provide the perfect base for your Sharm El Sheikh adventure, with personalized service and attention to detail that makes every stay memorable." data-it="Patrizia Stays offre una miscela unica di ospitalità italiana e fascino egiziano. I nostri appartamenti accuratamente selezionati forniscono la base perfetta per la tua avventura a Sharm El Sheikh, con servizio personalizzato e attenzione ai dettagli che rende ogni soggiorno memorabile.">
+                        Patrizia Stays offers a unique blend of Italian hospitality and Egyptian charm. Our carefully selected apartments provide the perfect base for your Sharm El Sheikh adventure, with personalized service and attention to detail that makes every stay memorable.
+                    </p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: var(--spacing-sm);">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span data-en=" Premium locations in Naama Bay and Nabq Bay" data-it=" Posizioni premium a Naama Bay e Nabq Bay">
+                                 Premium locations in Naama Bay and Nabq Bay
+                            </span>
+                        </li>
+                        <li style="margin-bottom: var(--spacing-sm);">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span data-en=" 24/7 concierge service" data-it=" Servizio concierge 24/7">
+                                 24/7 concierge service
+                            </span>
+                        </li>
+                        <li style="margin-bottom: var(--spacing-sm);">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span data-en=" Curated experiences and excursions" data-it=" Esperienze ed escursioni curate">
+                                 Curated experiences and excursions
+                            </span>
+                        </li>
+                        <li style="margin-bottom: var(--spacing-sm);">
+                            <i class="fas fa-check-circle text-primary"></i>
+                            <span data-en=" Authentic Italian and local dining" data-it=" Ristorazione italiana autentica e locale">
+                                 Authentic Italian and local dining
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+                <div style="display: flex; align-items: center; justify-content: center;">
+                    <img src="images/banner.gif" alt="Sharm El Sheikh Banner" style="width: 100%; border-radius: var(--radius-lg); box-shadow: 0 8px 24px var(--shadow-medium);">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-en="What Our Guests Say" data-it="Cosa Dicono i Nostri Ospiti">What Our Guests Say</h2>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div style="color: var(--accent-color); margin-bottom: var(--spacing-sm);">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p data-en="""Perfect location, amazing apartment with sea view. Patrizia's team made our stay unforgettable with personalized recommendations and excellent service.""" data-it="""Posizione perfetta, appartamento fantastico con vista mare. Il team di Patrizia ha reso il nostro soggiorno indimenticabile con raccomandazioni personalizzate e servizio eccellente.""">
+                            "Perfect location, amazing apartment with sea view. Patrizia's team made our stay unforgettable with personalized recommendations and excellent service."
+                        </p>
+                        <strong>- Maria & Giuseppe, Italy</strong>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <div style="color: var(--accent-color); margin-bottom: var(--spacing-sm);">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p data-en="""The snorkeling excursion was incredible! We saw so many colorful fish and coral. The Italian restaurant recommendations were spot on - felt like being back in Rome!""" data-it="""L'escursione di snorkeling è stata incredibile! Abbiamo visto così tanti pesci colorati e coralli. Le raccomandazioni del ristorante italiano erano perfette - ci siamo sentiti come essere di nuovo a Roma!""">
+                            "The snorkeling excursion was incredible! We saw so many colorful fish and coral. The Italian restaurant recommendations were spot on - felt like being back in Rome!"
+                        </p>
+                        <strong>- Sarah & Tom, UK</strong>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-body">
+                        <div style="color: var(--accent-color); margin-bottom: var(--spacing-sm);">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p data-en="""Best vacation ever! The desert safari was breathtaking, and the cooking class was so much fun. Can't wait to come back next year!""" data-it="""Miglior vacanza mai fatta! Il safari nel deserto è stato mozzafiato, e il corso di cucina è stato così divertente. Non vediamo l'ora di tornare l'anno prossimo!""">
+                            "Best vacation ever! The desert safari was breathtaking, and the cooking class was so much fun. Can't wait to come back next year!"
+                        </p>
+                        <strong>- Ahmed & Family, Egypt</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-en="Patrizia Stays" data-it="Patrizia Stays">Patrizia Stays</h4>
+                    <p data-en="Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences." data-it="Vivi il lusso a Sharm El Sheikh con i nostri appartamenti premium ed esperienze curate.">
+                        Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences.
+                    </p>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-facebook fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-tripadvisor fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-it="Collegamenti Rapidi">Quick Links</h4>
+                    <p><a href="apartments.html" data-en="Apartments" data-it="Appartamenti">Apartments</a></p>
+                    <p><a href="excursions.html" data-en="Excursions" data-it="Escursioni">Excursions</a></p>
+                    <p><a href="dining.html" data-en="Dining" data-it="Ristorazione">Dining</a></p>
+                    <p><a href="to-visit.html" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></p>
+                    <p><a href="reservation.html" data-en="Book Now" data-it="Prenota Ora">Book Now</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Contact Info" data-it="Informazioni di Contatto">Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +20 100 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@patriziastays.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>
+                        <span data-en="Naama Bay, Sharm El Sheikh, Egypt" data-it="Naama Bay, Sharm El Sheikh, Egitto">
+                            Naama Bay, Sharm El Sheikh, Egypt
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Newsletter" data-it="Newsletter">Newsletter</h4>
+                    <p data-en="Subscribe to get special offers and updates." data-it="Iscriviti per ricevere offerte speciali e aggiornamenti.">
+                        Subscribe to get special offers and updates.
+                    </p>
+                    <form style="margin-top: var(--spacing-md);">
+                        <input type="email" placeholder="Your email" class="form-control" style="margin-bottom: var(--spacing-sm);" data-en-placeholder="Your email" data-it-placeholder="La tua email">
+                        <button type="submit" class="btn btn-primary btn-block" data-en="Subscribe" data-it="Iscriviti">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Patrizia Stays. 
+                    <span data-en="All rights reserved." data-it="Tutti i diritti riservati.">
+                        All rights reserved.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    
+    <script>
+        // Load featured apartments on homepage
+        document.addEventListener('DOMContentLoaded', function() {
+            loadFeaturedApartments();
+        });
+        
+        function loadFeaturedApartments() {
+            const apartments = [
+                {
+                    id: 1,
+                    name: "Sea View Deluxe",
+                    name_it: "Vista Mare Deluxe",
+                    image: "apartment1.jpg",
+                    price: 120,
+                    description: "Stunning sea view apartment with modern amenities",
+                    description_it: "Appartamento con vista mare mozzafiato e comfort moderni"
+                },
+                {
+                    id: 2,
+                    name: "Garden Paradise",
+                    name_it: "Paradiso del Giardino",
+                    image: "apartment2.jpg",
+                    price: 95,
+                    description: "Cozy apartment surrounded by lush gardens",
+                    description_it: "Appartamento accogliente circondato da giardini rigogliosi"
+                },
+                {
+                    id: 3,
+                    name: "Poolside Luxury",
+                    name_it: "Lusso a Bordo Piscina",
+                    image: "apartment3.jpg",
+                    price: 150,
+                    description: "Premium apartment with direct pool access",
+                    description_it: "Appartamento premium con accesso diretto alla piscina"
+                }
+            ];
+            
+            const container = document.getElementById('featuredApartments');
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            container.innerHTML = apartments.map(apartment => `
+                <div class="card fade-in">
+                    <img src="images/${apartment.image}" alt="${currentLang === 'it' ? apartment.name_it : apartment.name}" class="card-img">
+                    <div class="card-body">
+                        <h3 class="card-title">${currentLang === 'it' ? apartment.name_it : apartment.name}</h3>
+                        <p class="card-text">${currentLang === 'it' ? apartment.description_it : apartment.description}</p>
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span class="booking-price">$${apartment.price} <small data-en="per night" data-it="per notte">per night</small></span>
+                            <a href="apartment-detail.html?id=${apartment.id}" class="btn btn-primary" data-en="View Details" data-it="Vedi Dettagli">
+                                View Details
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Trigger fade-in animation
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+            }, 100);
+        }
+    </script>
+</body>
+</html>

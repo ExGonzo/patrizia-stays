@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apartment Details - Patrizia Stays</title>
+    <meta name="description" content="View detailed information about our premium apartments in Sharm El Sheikh with gallery, amenities, and booking options.">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">Patrizia Stays</a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="navbar-nav" id="navbarNav">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-it="Casa">Home</a></li>
+                <li><a href="apartments.html" class="nav-link active" data-en="Apartments" data-it="Appartamenti">Apartments</a></li>
+                <li><a href="excursions.html" class="nav-link" data-en="Excursions" data-it="Escursioni">Excursions</a></li>
+                <li><a href="dining.html" class="nav-link" data-en="Dining" data-it="Ristorazione">Dining</a></li>
+                <li><a href="to-visit.html" class="nav-link" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></li>
+                <li><a href="reservation.html" class="nav-link" data-en="Book Now" data-it="Prenota Ora">Book Now</a></li>
+            </ul>
+            
+            <div class="language-switcher" id="languageSwitcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="it">IT</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Apartment Details -->
+    <section class="section" style="padding-top: 100px;">
+        <div class="container">
+            <!-- Apartment Header -->
+            <div class="apartment-header">
+                <h1 id="apartmentName" data-en="Loading..." data-it="Caricamento...">Loading...</h1>
+                <div class="apartment-location">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span id="apartmentLocation" data-en="Sharm El Sheikh" data-it="Sharm El Sheikh">Sharm El Sheikh</span>
+                    <span style="margin: 0 var(--spacing-sm); color: var(--text-light);">•</span>
+                    <span id="apartmentRating">
+                        <i class="fas fa-star" style="color: var(--accent-color);"></i>
+                        <i class="fas fa-star" style="color: var(--accent-color);"></i>
+                        <i class="fas fa-star" style="color: var(--accent-color);"></i>
+                        <i class="fas fa-star" style="color: var(--accent-color);"></i>
+                        <i class="fas fa-star" style="color: var(--accent-color);"></i>
+                        <span style="margin-left: var(--spacing-sm);">(4.8)</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid grid-3">
+                <!-- Gallery Section -->
+                <div class="grid-span-2">
+                    <div class="gallery-container">
+                        <div class="gallery-main">
+                            <img id="mainGalleryImage" src="images/apartment1.jpg" alt="Apartment Gallery" class="gallery-main-img">
+                            <button class="gallery-nav gallery-prev" id="prevImage">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="gallery-nav gallery-next" id="nextImage">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="gallery-thumbs" id="galleryThumbs">
+                            <!-- Thumbnails will be loaded dynamically -->
+                        </div>
+                    </div>
+
+                    <!-- Description Section -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 data-en="About this apartment" data-it="Informazioni sull'appartamento">About this apartment</h3>
+                            <p id="apartmentDescription" data-en="Loading description..." data-it="Caricamento descrizione...">
+                                Loading description...
+                            </p>
+                            
+                            <h3 style="margin-top: var(--spacing-lg);" data-en="Amenities" data-it="Servizi">Amenities</h3>
+                            <div class="amenities-grid" id="amenitiesGrid">
+                                <!-- Amenities will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Section -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 data-en="Location" data-it="Posizione">Location</h3>
+                            <div id="apartmentMap" style="height: 300px; border-radius: var(--border-radius); margin-bottom: var(--spacing-md);"></div>
+                            <p id="locationDescription" data-en="Conveniently located in the heart of Sharm El Sheikh" data-it="Convenientemente situato nel cuore di Sharm El Sheikh">
+                                Conveniently located in the heart of Sharm El Sheikh
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Reviews Section -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h3 data-en="Guest Reviews" data-it="Recensioni degli Ospiti">Guest Reviews</h3>
+                            <div class="reviews-container" id="reviewsContainer">
+                                <!-- Reviews will be loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Widget -->
+                <div>
+                    <div class="booking-widget sticky">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="booking-price">
+                                    <span id="bookingPrice">$120</span>
+                                    <small data-en="per night" data-it="per notte">per night</small>
+                                </div>
+                                
+                                <form id="bookingForm">
+                                    <div class="form-group">
+                                        <label data-en="Check-in" data-it="Check-in">Check-in</label>
+                                        <input type="date" class="form-control" id="checkinDate" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label data-en="Check-out" data-it="Check-out">Check-out</label>
+                                        <input type="date" class="form-control" id="checkoutDate" required>
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label data-en="Guests" data-it="Ospiti">Guests</label>
+                                        <select class="form-control" id="guestCount">
+                                            <option value="1">1 Guest</option>
+                                            <option value="2" selected>2 Guests</option>
+                                            <option value="3">3 Guests</option>
+                                            <option value="4">4 Guests</option>
+                                            <option value="5">5 Guests</option>
+                                            <option value="6">6 Guests</option>
+                                        </select>
+                                    </div>
+                                    
+                                    <div class="booking-summary" id="bookingSummary">
+                                        <div class="summary-item">
+                                            <span data-en="Nights" data-it="Notti">Nights</span>
+                                            <span id="nightCount">0</span>
+                                        </div>
+                                        <div class="summary-item">
+                                            <span id="pricePerNight">$120 x 0 nights</span>
+                                            <span id="totalPrice">$0</span>
+                                        </div>
+                                        <div class="summary-item" style="font-weight: 600; border-top: 1px solid var(--border-color); padding-top: var(--spacing-sm);">
+                                            <span data-en="Total" data-it="Totale">Total</span>
+                                            <span id="finalTotal">$0</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary btn-block" data-en="Book Now" data-it="Prenota Ora">
+                                        Book Now
+                                    </button>
+                                </form>
+                                
+                                <div style="margin-top: var(--spacing-md); text-align: center;">
+                                    <small style="color: var(--text-light);">
+                                        <i class="fas fa-shield-alt"></i>
+                                        <span data-en="Instant confirmation" data-it="Conferma immediata">Instant confirmation</span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Info -->
+                        <div class="card" style="margin-top: var(--spacing-md);">
+                            <div class="card-body">
+                                <h4 data-en="Quick Info" data-it="Info Rapide">Quick Info</h4>
+                                <div class="quick-info">
+                                    <div class="info-item">
+                                        <i class="fas fa-users"></i>
+                                        <span id="maxGuests">4 guests max</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-bed"></i>
+                                        <span id="bedroomInfo">2 bedrooms</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-bath"></i>
+                                        <span id="bathroomInfo">2 bathrooms</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-home"></i>
+                                        <span id="propertySize">85 m²</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-clock"></i>
+                                        <span data-en="Check-in: 3:00 PM" data-it="Check-in: 15:00">Check-in: 3:00 PM</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                        <span data-en="Check-out: 11:00 AM" data-it="Check-out: 11:00">Check-out: 11:00 AM</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-en="Patrizia Stays" data-it="Patrizia Stays">Patrizia Stays</h4>
+                    <p data-en="Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences." data-it="Vivi il lusso a Sharm El Sheikh con i nostri appartamenti premium ed esperienze curate.">
+                        Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences.
+                    </p>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-facebook fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-tripadvisor fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-it="Collegamenti Rapidi">Quick Links</h4>
+                    <p><a href="apartments.html" data-en="Apartments" data-it="Appartamenti">Apartments</a></p>
+                    <p><a href="excursions.html" data-en="Excursions" data-it="Escursioni">Excursions</a></p>
+                    <p><a href="dining.html" data-en="Dining" data-it="Ristorazione">Dining</a></p>
+                    <p><a href="to-visit.html" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></p>
+                    <p><a href="reservation.html" data-en="Book Now" data-it="Prenota Ora">Book Now</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Contact Info" data-it="Informazioni di Contatto">Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +20 100 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@patriziastays.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>
+                        <span data-en="Naama Bay, Sharm El Sheikh, Egypt" data-it="Naama Bay, Sharm El Sheikh, Egitto">
+                            Naama Bay, Sharm El Sheikh, Egypt
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Newsletter" data-it="Newsletter">Newsletter</h4>
+                    <p data-en="Subscribe to get special offers and updates." data-it="Iscriviti per ricevere offerte speciali e aggiornamenti.">
+                        Subscribe to get special offers and updates.
+                    </p>
+                    <form style="margin-top: var(--spacing-md);">
+                        <input type="email" placeholder="Your email" class="form-control" style="margin-bottom: var(--spacing-sm);" data-en-placeholder="Your email" data-it-placeholder="La tua email">
+                        <button type="submit" class="btn btn-primary btn-block" data-en="Subscribe" data-it="Iscriviti">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Patrizia Stays. 
+                    <span data-en="All rights reserved." data-it="Tutti i diritti riservati.">
+                        All rights reserved.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/apartment-detail.js"></script>
+    <script>
+        // Load apartment details when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadApartmentDetails();
+        });
+        
+        function loadApartmentDetails() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const apartmentId = urlParams.get('id');
+            
+            if (!apartmentId) {
+                window.location.href = 'apartments.html';
+                return;
+            }
+            
+            const apartments = [
+                {
+                    id: 1,
+                    name: "Sea View Deluxe",
+                    name_it: "Vista Mare Deluxe",
+                    images: ["apartment1.jpg", "apartment1.jpg", "apartment1.jpg"],
+                    price: 120,
+                    description: "Stunning sea view apartment with modern amenities and private balcony",
+                    description_it: "Appartamento con vista mare mozzafiato e comfort moderni con balcone privato",
+                    amenities: ["Sea View", "WiFi", "AC", "Kitchen", "Balcony"],
+                    amenities_it: ["Vista Mare", "WiFi", "Aria Condizionata", "Cucina", "Balcone"],
+                    location: "Naama Bay",
+                    location_it: "Naama Bay",
+                    guests: 4,
+                    bedrooms: 2,
+                    bathrooms: 2,
+                    size: 85,
+                    coordinates: [27.9158, 34.329]
+                },
+                {
+                    id: 2,
+                    name: "Garden Paradise",
+                    name_it: "Paradiso del Giardino",
+                    images: ["apartment2.jpg", "apartment2.jpg", "apartment2.jpg"],
+                    price: 95,
+                    description: "Cozy apartment surrounded by lush gardens with terrace access",
+                    description_it: "Appartamento accogliente circondato da giardini rigogliosi con accesso terrazza",
+                    amenities: ["Garden View", "WiFi", "AC", "Terrace", "Parking"],
+                    amenities_it: ["Vista Giardino", "WiFi", "Aria Condizionata", "Terrazza", "Parcheggio"],
+                    location: "Nabq Bay",
+                    location_it: "Nabq Bay",
+                    guests: 3,
+                    bedrooms: 1,
+                    bathrooms: 1,
+                    size: 60,
+                    coordinates: [28.105, 34.454]
+                },
+                {
+                    id: 3,
+                    name: "Poolside Luxury",
+                    name_it: "Lusso a Bordo Piscina",
+                    images: ["apartment3.jpg", "apartment3.jpg", "apartment3.jpg"],
+                    price: 150,
+                    description: "Premium apartment with direct pool access and luxury amenities",
+                    description_it: "Appartamento premium con accesso diretto alla piscina e comfort di lusso",
+                    amenities: ["Pool Access", "Sea View", "WiFi", "AC", "Kitchen", "Balcony"],
+                    amenities_it: ["Accesso Piscina", "Vista Mare", "WiFi", "Aria Condizionata", "Cucina", "Balcone"],
+                    location: "Naama Bay",
+                    location_it: "Naama Bay",
+                    guests: 6,
+                    bedrooms: 3,
+                    bathrooms: 2,
+                    size: 110,
+                    coordinates: [27.912, 34.327]
+                },
+                {
+                    id: 4,
+                    name: "Sunset Studio",
+                    name_it: "Studio al Tramonto",
+                    images: ["apartment4.jpg", "apartment4.jpg", "apartment4.jpg"],
+                    price: 75,
+                    description: "Modern studio apartment with sunset views and contemporary design",
+                    description_it: "Appartamento studio moderno con vista tramonto e design contemporaneo",
+                    amenities: ["Sunset View", "WiFi", "AC", "Kitchenette", "Balcony"],
+                    amenities_it: ["Vista Tramonto", "WiFi", "Aria Condizionata", "Angolo Cottura", "Balcone"],
+                    location: "Naama Bay",
+                    location_it: "Naama Bay",
+                    guests: 2,
+                    bedrooms: 1,
+                    bathrooms: 1,
+                    size: 45,
+                    coordinates: [27.914, 34.328]
+                },
+                {
+                    id: 5,
+                    name: "Family Oasis",
+                    name_it: "Oasi Familiare",
+                    images: ["apartment5.jpg", "apartment5.jpg", "apartment5.jpg"],
+                    price: 135,
+                    description: "Spacious family apartment with garden view and children's amenities",
+                    description_it: "Ampio appartamento familiare con vista giardino e comfort per bambini",
+                    amenities: ["Garden View", "Family Friendly", "WiFi", "AC", "Kitchen", "Play Area"],
+                    amenities_it: ["Vista Giardino", "Famiglia", "WiFi", "Aria Condizionata", "Cucina", "Area Giochi"],
+                    location: "Nabq Bay",
+                    location_it: "Nabq Bay",
+                    guests: 6,
+                    bedrooms: 3,
+                    bathrooms: 2,
+                    size: 120,
+                    coordinates: [28.11, 34.46]
+                },
+                {
+                    id: 6,
+                    name: "Executive Suite",
+                    name_it: "Suite Executive",
+                    images: ["apartment6.jpg", "apartment6.jpg", "apartment6.jpg"],
+                    price: 180,
+                    description: "Luxury executive suite with panoramic sea views and premium services",
+                    description_it: "Suite executive di lusso con vista panoramica sul mare e servizi premium",
+                    amenities: ["Panoramic View", "Concierge", "WiFi", "AC", "Full Kitchen", "Balcony", "Gym Access"],
+                    amenities_it: ["Vista Panoramica", "Concierge", "WiFi", "Aria Condizionata", "Cucina Completa", "Balcone", "Accesso Palestra"],
+                    location: "Naama Bay",
+                    location_it: "Naama Bay",
+                    guests: 4,
+                    bedrooms: 2,
+                    bathrooms: 2,
+                    size: 95,
+                    coordinates: [27.916, 34.33]
+                },
+                {
+                    id: 7,
+                    name: "Romantic Retreat",
+                    name_it: "Rifugio Romantico",
+                    images: ["apartment1.jpg", "apartment1.jpg", "apartment1.jpg"],
+                    price: 110,
+                    description: "Intimate apartment perfect for couples with private terrace and sea views",
+                    description_it: "Appartamento intimo perfetto per coppie con terrazza privata e vista mare",
+                    amenities: ["Sea View", "Private Terrace", "WiFi", "AC", "Kitchenette", "Romantic Setup"],
+                    amenities_it: ["Vista Mare", "Terrazza Privata", "WiFi", "Aria Condizionata", "Angolo Cottura", "Setup Romantico"],
+                    location: "Naama Bay",
+                    location_it: "Naama Bay",
+                    guests: 2,
+                    bedrooms: 1,
+                    bathrooms: 1,
+                    size: 55,
+                    coordinates: [27.915, 34.329]
+                },
+                {
+                    id: 8,
+                    name: "Budget Comfort",
+                    name_it: "Comfort Economico",
+                    images: ["apartment2.jpg", "apartment2.jpg", "apartment2.jpg"],
+                    price: 65,
+                    description: "Affordable comfort with essential amenities and great location",
+                    description_it: "Comfort economico con comfort essenziali e ottima posizione",
+                    amenities: ["WiFi", "AC", "Kitchenette", "Parking", "City View"],
+                    amenities_it: ["WiFi", "Aria Condizionata", "Angolo Cottura", "Parcheggio", "Vista Città"],
+                    location: "Nabq Bay",
+                    location_it: "Nabq Bay",
+                    guests: 3,
+                    bedrooms: 1,
+                    bathrooms: 1,
+                    size: 50,
+                    coordinates: [28.106, 34.455]
+                },
+                {
+                    id: 9,
+                    name: "Penthouse Elite",
+                    name_it: "Attico Elite",
+                    images: ["apartment3.jpg", "apartment3.jpg", "apartment3.jpg"],
+                    price: 200,
+                    description: "Exclusive penthouse with panoramic sea views and premium amenities",
+                    description_it: "Attico esclusivo con vista panoramica sul mare e comfort premium",
+                    amenities: ["Panoramic View", "Sea View", "WiFi", "AC", "Full Kitchen", "Large Terrace"],
+                    amenities_it: ["Vista Panoramica", "Vista Mare", "WiFi", "Aria Condizionata", "Cucina Completa", "Ampia Terrazza"],
+                    location: "Naama Bay",
+                    location_it: "Naama Bay",
+                    guests: 8,
+                    bedrooms: 4,
+                    bathrooms: 3,
+                    size: 200,
+                    coordinates: [27.911, 34.326]
+                }
+            ];
+            
+            const apartment = apartments.find(a => a.id == apartmentId);
+            
+            if (!apartment) {
+                window.location.href = 'apartments.html';
+                return;
+            }
+            
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            // Populate apartment details
+            document.getElementById('apartmentName').textContent = currentLang === 'it' ? apartment.name_it : apartment.name;
+            document.getElementById('apartmentLocation').textContent = currentLang === 'it' ? apartment.location_it : apartment.location;
+            document.getElementById('apartmentDescription').textContent = currentLang === 'it' ? apartment.description_it : apartment.description;
+            document.getElementById('bookingPrice').textContent = `$${apartment.price}`;
+            document.getElementById('maxGuests').textContent = `${apartment.guests} guests max`;
+            document.getElementById('bedroomInfo').textContent = `${apartment.bedrooms} bedrooms`;
+            document.getElementById('bathroomInfo').textContent = `${apartment.bathrooms} bathrooms`;
+            document.getElementById('propertySize').textContent = `${apartment.size} m²`;
+            
+            // Set max guests in dropdown
+            const guestSelect = document.getElementById('guestCount');
+            guestSelect.innerHTML = '';
+            for (let i = 1; i <= apartment.guests; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i === 1 ? '1 Guest' : `${i} Guests`;
+                if (i === 2) option.selected = true;
+                guestSelect.appendChild(option);
+            }
+            
+            // Load gallery
+            loadGallery(apartment.images);
+            
+            // Load amenities
+            loadAmenities(currentLang === 'it' ? apartment.amenities_it : apartment.amenities);
+            
+            // Load map
+            loadMap(apartment.coordinates, currentLang === 'it' ? apartment.location_it : apartment.location);
+            
+            // Load reviews
+            loadReviews();
+            
+            // Initialize booking calculator
+            initializeBookingCalculator(apartment.price);
+        }
+        
+        function loadGallery(images) {
+            const mainImage = document.getElementById('mainGalleryImage');
+            const thumbsContainer = document.getElementById('galleryThumbs');
+            
+            // Set first image as main
+            mainImage.src = `images/${images[0]}`;
+            
+            // Create thumbnails
+            thumbsContainer.innerHTML = images.map((image, index) => `
+                <div class="gallery-thumb ${index === 0 ? 'active' : ''}" data-image="${image}">
+                    <img src="images/${image}" alt="Gallery thumbnail ${index + 1}">
+                </div>
+            `).join('');
+            
+            // Add click handlers
+            document.querySelectorAll('.gallery-thumb').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const imageName = this.dataset.image;
+                    mainImage.src = `images/${imageName}`;
+                    
+                    // Update active state
+                    document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Navigation buttons
+            let currentIndex = 0;
+            
+            document.getElementById('prevImage').addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                mainImage.src = `images/${images[currentIndex]}`;
+                updateActiveThumb(currentIndex);
+            });
+            
+            document.getElementById('nextImage').addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                mainImage.src = `images/${images[currentIndex]}`;
+                updateActiveThumb(currentIndex);
+            });
+            
+            function updateActiveThumb(index) {
+                document.querySelectorAll('.gallery-thumb').forEach((thumb, i) => {
+                    thumb.classList.toggle('active', i === index);
+                });
+            }
+        }
+        
+        function loadAmenities(amenities) {
+            const container = document.getElementById('amenitiesGrid');
+            container.innerHTML = amenities.map(amenity => `
+                <div class="amenity-item">
+                    <i class="fas fa-check-circle" style="color: var(--success-color);"></i>
+                    <span>${amenity}</span>
+                </div>
+            `).join('');
+        }
+        
+        function loadMap(coordinates, location) {
+            const map = L.map('apartmentMap').setView(coordinates, 15);
+            
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '© OpenStreetMap contributors'
+            }).addTo(map);
+            
+            L.marker(coordinates)
+                .addTo(map)
+                .bindPopup(location)
+                .openPopup();
+        }
+        
+        function loadReviews() {
+            const reviews = [
+                {
+                    name: "Sarah Johnson",
+                    rating: 5,
+                    date: "2 weeks ago",
+                    comment: "Amazing apartment with stunning views! The location was perfect and the amenities were exactly as described. Highly recommend!",
+                    comment_it: "Appartamento straordinario con viste mozzafiato! La posizione era perfetta e i comfort erano esattamente come descritto. Consigliatissimo!"
+                },
+                {
+                    name: "Marco Rodriguez",
+                    rating: 4,
+                    comment: "Great stay overall. The apartment was clean and well-maintained. Only minor issue was the WiFi speed, but everything else was excellent.",
+                    comment_it: "Ottimo soggiorno nel complesso. L'appartamento era pulito e ben tenuto. Solo un piccolo problema con la velocità del WiFi, ma tutto il resto era eccellente."
+                },
+                {
+                    name: "Emma Thompson",
+                    rating: 5,
+                    comment: "Perfect for our family vacation! The kids loved the pool and we enjoyed the beautiful sunsets from the balcony every evening.",
+                    comment_it: "Perfetto per le nostre vacanze in famiglia! I bambini hanno adorato la piscina e abbiamo apprezzato i bellissimi tramonti dal balcone ogni sera."
+                }
+            ];
+            
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            const container = document.getElementById('reviewsContainer');
+            container.innerHTML = reviews.map(review => `
+                <div class="review-item">
+                    <div class="review-header">
+                        <div>
+                            <strong>${review.name}</strong>
+                            <div class="review-rating">
+                                ${Array(review.rating).fill('<i class="fas fa-star" style="color: var(--accent-color);"></i>').join('')}
+                                ${Array(5 - review.rating).fill('<i class="far fa-star" style="color: var(--accent-color);"></i>').join('')}
+                            </div>
+                        </div>
+                        <small style="color: var(--text-light);">${review.date}</small>
+                    </div>
+                    <p>${currentLang === 'it' && review.comment_it ? review.comment_it : review.comment}</p>
+                </div>
+            `).join('');
+        }
+        
+        function initializeBookingCalculator(pricePerNight) {
+            const checkinInput = document.getElementById('checkinDate');
+            const checkoutInput = document.getElementById('checkoutDate');
+            const guestSelect = document.getElementById('guestCount');
+            const nightCountEl = document.getElementById('nightCount');
+            const pricePerNightEl = document.getElementById('pricePerNight');
+            const totalPriceEl = document.getElementById('totalPrice');
+            const finalTotalEl = document.getElementById('finalTotal');
+            
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            checkinInput.min = today;
+            checkoutInput.min = today;
+            
+            function calculateTotal() {
+                const checkin = new Date(checkinInput.value);
+                const checkout = new Date(checkoutInput.value);
+                
+                if (checkinInput.value && checkoutInput.value && checkout > checkin) {
+                    const nights = Math.ceil((checkout - checkin) / (1000 * 60 * 60 * 24));
+                    const total = nights * pricePerNight;
+                    
+                    nightCountEl.textContent = nights;
+                    pricePerNightEl.textContent = `$${pricePerNight} x ${nights} nights`;
+                    totalPriceEl.textContent = `$${total}`;
+                    finalTotalEl.textContent = `$${total}`;
+                } else {
+                    nightCountEl.textContent = '0';
+                    pricePerNightEl.textContent = `$${pricePerNight} x 0 nights`;
+                    totalPriceEl.textContent = '$0';
+                    finalTotalEl.textContent = '$0';
+                }
+            }
+            
+            checkinInput.addEventListener('change', function() {
+                checkoutInput.min = this.value;
+                if (checkoutInput.value && checkoutInput.value <= this.value) {
+                    checkoutInput.value = '';
+                }
+                calculateTotal();
+            });
+            
+            checkoutInput.addEventListener('change', calculateTotal);
+            guestSelect.addEventListener('change', calculateTotal);
+            
+            // Form submission
+            document.getElementById('bookingForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                if (!checkinInput.value || !checkoutInput.value) {
+                    alert('Please select check-in and check-out dates');
+                    return;
+                }
+                
+                const checkin = new Date(checkinInput.value);
+                const checkout = new Date(checkoutInput.value);
+                
+                if (checkout <= checkin) {
+                    alert('Check-out date must be after check-in date');
+                    return;
+                }
+                
+                // Redirect to reservation page with booking details
+                const bookingData = {
+                    apartment: document.getElementById('apartmentName').textContent,
+                    checkin: checkinInput.value,
+                    checkout: checkoutInput.value,
+                    guests: guestSelect.value,
+                    nights: nightCountEl.textContent,
+                    total: finalTotalEl.textContent
+                };
+                
+                localStorage.setItem('bookingData', JSON.stringify(bookingData));
+                window.location.href = 'reservation.html';
+            });
+        }
+    </script>
+</body>
+</html>

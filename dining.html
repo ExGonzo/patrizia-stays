@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dining - Patrizia Stays</title>
+    <meta name="description" content="Discover the best restaurants and cooking classes in Sharm El Sheikh. From local Egyptian cuisine to international fine dining.">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">Patrizia Stays</a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="navbar-nav" id="navbarNav">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-it="Casa">Home</a></li>
+                <li><a href="apartments.html" class="nav-link" data-en="Apartments" data-it="Appartamenti">Apartments</a></li>
+                <li><a href="excursions.html" class="nav-link" data-en="Excursions" data-it="Escursioni">Excursions</a></li>
+                <li><a href="dining.html" class="nav-link active" data-en="Dining" data-it="Ristorazione">Dining</a></li>
+                <li><a href="to-visit.html" class="nav-link" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></li>
+                <li><a href="reservation.html" class="nav-link" data-en="Book Now" data-it="Prenota Ora">Book Now</a></li>
+            </ul>
+            
+            <div class="language-switcher" id="languageSwitcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="it">IT</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="section" style="padding-top: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; text-align: center;">
+        <div class="container">
+            <h1 data-en="Culinary Experiences" data-it="Esperienze Culinarie">Culinary Experiences</h1>
+            <p data-en="Discover the finest restaurants and authentic cooking classes in Sharm El Sheikh" data-it="Scopri i migliori ristoranti e autentiche lezioni di cucina a Sharm El Sheikh">
+                Discover the finest restaurants and authentic cooking classes in Sharm El Sheikh
+            </p>
+        </div>
+    </section>
+
+    <!-- Restaurant Filters -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="filters" id="diningFilters">
+                <button class="filter-btn active" data-filter="all" data-en="All Dining" data-it="Tutta la Ristorazione">All Dining</button>
+                <button class="filter-btn" data-filter="restaurant" data-en="Restaurants" data-it="Ristoranti">Restaurants</button>
+                <button class="filter-btn" data-filter="cooking" data-en="Cooking Classes" data-it="Lezioni di Cucina">Cooking Classes</button>
+                <button class="filter-btn" data-filter="local" data-en="Local Cuisine" data-it="Cucina Locale">Local Cuisine</button>
+                <button class="filter-btn" data-filter="international" data-en="International" data-it="Internazionale">International</button>
+                <button class="filter-btn" data-filter="fine-dining" data-en="Fine Dining" data-it="Ristorazione di Lusso">Fine Dining</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurants Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-en="Restaurants" data-it="Ristoranti">Restaurants</h2>
+            <div class="grid grid-2" id="restaurantsGrid">
+                <!-- Restaurants will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Cooking Classes Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-en="Cooking Classes" data-it="Lezioni di Cucina">Cooking Classes</h2>
+            <div class="grid grid-2" id="cookingClassesGrid">
+                <!-- Cooking classes will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Restaurant Reservation Modal -->
+    <div class="modal" id="restaurantModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 id="restaurantModalTitle" data-en="Restaurant Reservation" data-it="Prenotazione Ristorante">Restaurant Reservation</h3>
+                <button class="modal-close" id="restaurantModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="restaurantBookingForm">
+                    <div class="form-group">
+                        <label data-en="Restaurant" data-it="Ristorante">Restaurant</label>
+                        <input type="text" class="form-control" id="restaurantName" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Date" data-it="Data">Date</label>
+                        <input type="date" class="form-control" id="restaurantDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Time" data-it="Ora">Time</label>
+                        <select class="form-control" id="restaurantTime" required>
+                            <option value="" data-en="Select time" data-it="Seleziona orario">Select time</option>
+                            <option value="18:00">6:00 PM</option>
+                            <option value="18:30">6:30 PM</option>
+                            <option value="19:00">7:00 PM</option>
+                            <option value="19:30">7:30 PM</option>
+                            <option value="20:00">8:00 PM</option>
+                            <option value="20:30">8:30 PM</option>
+                            <option value="21:00">9:00 PM</option>
+                            <option value="21:30">9:30 PM</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Number of Guests" data-it="Numero di Ospiti">Number of Guests</label>
+                        <select class="form-control" id="restaurantGuests">
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6 People</option>
+                            <option value="7">7 People</option>
+                            <option value="8">8 People</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Special Requests" data-it="Richieste Speciali">Special Requests</label>
+                        <textarea class="form-control" id="specialRequests" rows="3" 
+                                  data-en-placeholder="Any dietary restrictions or special requests..." 
+                                  data-it-placeholder="Eventuali restrizioni alimentari o richieste speciali..."
+                                  style="resize: vertical;"></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block" data-en="Reserve Table" data-it="Riserva Tavolo">
+                        Reserve Table
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cooking Class Booking Modal -->
+    <div class="modal" id="cookingModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 id="cookingModalTitle" data-en="Book Cooking Class" data-it="Prenota Lezione di Cucina">Book Cooking Class</h3>
+                <button class="modal-close" id="cookingModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="cookingBookingForm">
+                    <div class="form-group">
+                        <label data-en="Cooking Class" data-it="Lezione di Cucina">Cooking Class</label>
+                        <input type="text" class="form-control" id="cookingClassName" readonly>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Select Date" data-it="Seleziona Data">Select Date</label>
+                        <input type="date" class="form-control" id="cookingDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Time Slot" data-it="Fascia Oraria">Time Slot</label>
+                        <select class="form-control" id="cookingTime" required>
+                            <option value="" data-en="Select time" data-it="Seleziona orario">Select time</option>
+                            <option value="10:00">10:00 AM</option>
+                            <option value="14:00">2:00 PM</option>
+                            <option value="16:00">4:00 PM</option>
+                            <option value="18:00">6:00 PM</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Number of Participants" data-it="Numero di Partecipanti">Number of Participants</label>
+                        <select class="form-control" id="cookingParticipants">
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Dietary Preferences" data-it="Preferenze Alimentari">Dietary Preferences</label>
+                        <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                            <label style="display: flex; align-items: center; font-weight: normal;">
+                                <input type="checkbox" value="vegetarian" style="margin-right: 4px;">
+                                <span data-en="Vegetarian" data-it="Vegetariano">Vegetarian</span>
+                            </label>
+                            <label style="display: flex; align-items: center; font-weight: normal;">
+                                <input type="checkbox" value="vegan" style="margin-right: 4px;">
+                                <span data-en="Vegan" data-it="Vegano">Vegan</span>
+                            </label>
+                            <label style="display: flex; align-items: center; font-weight: normal;">
+                                <input type="checkbox" value="gluten-free" style="margin-right: 4px;">
+                                <span data-en="Gluten-free" data-it="Senza Glutine">Gluten-free</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="booking-summary" id="cookingSummary">
+                        <div class="summary-item">
+                            <span data-en="Price per person" data-it="Prezzo per persona">Price per person</span>
+                            <span id="cookingPricePerPerson">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span data-en="Participants" data-it="Partecipanti">Participants</span>
+                            <span id="cookingParticipantsDisplay">2</span>
+                        </div>
+                        <div class="summary-item">
+                            <span data-en="Total" data-it="Totale">Total</span>
+                            <span id="cookingTotal">$0</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block" data-en="Book Class" data-it="Prenota Lezione">
+                        Book Class
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-en="Patrizia Stays" data-it="Patrizia Stays">Patrizia Stays</h4>
+                    <p data-en="Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences." data-it="Vivi il lusso a Sharm El Sheikh con i nostri appartamenti premium ed esperienze curate.">
+                        Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences.
+                    </p>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-facebook fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-tripadvisor fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-it="Collegamenti Rapidi">Quick Links</h4>
+                    <p><a href="apartments.html" data-en="Apartments" data-it="Appartamenti">Apartments</a></p>
+                    <p><a href="excursions.html" data-en="Excursions" data-it="Escursioni">Excursions</a></p>
+                    <p><a href="dining.html" data-en="Dining" data-it="Ristorazione">Dining</a></p>
+                    <p><a href="to-visit.html" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></p>
+                    <p><a href="reservation.html" data-en="Book Now" data-it="Prenota Ora">Book Now</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Contact Info" data-it="Informazioni di Contatto">Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +20 100 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@patriziastays.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>
+                        <span data-en="Naama Bay, Sharm El Sheikh, Egypt" data-it="Naama Bay, Sharm El Sheikh, Egitto">
+                            Naama Bay, Sharm El Sheikh, Egypt
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Newsletter" data-it="Newsletter">Newsletter</h4>
+                    <p data-en="Subscribe to get special offers and updates." data-it="Iscriviti per ricevere offerte speciali e aggiornamenti.">
+                        Subscribe to get special offers and updates.
+                    </p>
+                    <form style="margin-top: var(--spacing-md);">
+                        <input type="email" placeholder="Your email" class="form-control" style="margin-bottom: var(--spacing-sm);" data-en-placeholder="Your email" data-it-placeholder="La tua email">
+                        <button type="submit" class="btn btn-primary btn-block" data-en="Subscribe" data-it="Iscriviti">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Patrizia Stays. 
+                    <span data-en="All rights reserved." data-it="Tutti i diritti riservati.">
+                        All rights reserved.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/dining.js"></script>
+    <script>
+        // Load dining options when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDiningOptions();
+        });
+        
+        function loadDiningOptions() {
+            const restaurants = [
+                {
+                    id: 1,
+                    name: "Fares Seafood Restaurant",
+                    name_it: "Ristorante di Pesce Fares",
+                    image: "seafood-restaurant.jpg",
+                    cuisine: "Seafood",
+                    cuisine_it: "Pesce",
+                    category: "restaurant local fine-dining",
+                    rating: 4.7,
+                    price_range: "$$$",
+                    description: "Premium seafood restaurant offering the freshest catch from the Red Sea with stunning sea views.",
+                    description_it: "Ristorante di pesce premium che offre il pescato più fresco dal Mar Rosso con viste mozzafiato sul mare.",
+                    specialties: ["Grilled Lobster", "Seafood Platter", "Red Sea Fish", "Fresh Oysters"],
+                    specialties_it: ["Aragosta Grigliata", "Piatto di Frutti di Mare", "Pesce del Mar Rosso", "Ostriche Fresche"],
+                    hours: "12:00 PM - 11:00 PM",
+                    hours_it: "12:00 - 23:00",
+                    location: "Naama Bay",
+                    location_it: "Naama Bay"
+                },
+                {
+                    id: 2,
+                    name: "El Masrien",
+                    name_it: "El Masrien",
+                    image: "egyptian-restaurant.jpg",
+                    cuisine: "Egyptian",
+                    cuisine_it: "Egiziana",
+                    category: "restaurant local",
+                    rating: 4.5,
+                    price_range: "$$",
+                    description: "Authentic Egyptian cuisine in a traditional setting. Experience the real flavors of Egypt.",
+                    description_it: "Autentica cucina egiziana in un ambiente tradizionale. Vivi i veri sapori dell'Egitto.",
+                    specialties: ["Koshari", "Molokhia", "Grilled Kofta", "Fattah"],
+                    specialties_it: ["Koshari", "Molokhia", "Kofta Grigliata", "Fattah"],
+                    hours: "11:00 AM - 10:00 PM",
+                    hours_it: "11:00 - 22:00",
+                    location: "Old Market",
+                    location_it: "Vecchio Mercato"
+                },
+                {
+                    id: 3,
+                    name: "La Fleur",
+                    name_it: "La Fleur",
+                    image: "ristorante-italiano.jpg",
+                    cuisine: "International",
+                    cuisine_it: "Internazionale",
+                    category: "restaurant international fine-dining",
+                    rating: 4.8,
+                    price_range: "$$$$",
+                    description: "Fine dining restaurant offering international cuisine with a Mediterranean twist and elegant ambiance.",
+                    description_it: "Ristorante di alta cucina che offre cucina internazionale con un tocco mediterraneo e ambiente elegante.",
+                    specialties: ["Beef Tenderloin", "Sea Bass", "Lobster Risotto", "Tiramisu"],
+                    specialties_it: ["Filetto di Manzo", "Branzino", "Risotto all'Aragosta", "Tiramisù"],
+                    hours: "6:00 PM - 12:00 AM",
+                    hours_it: "18:00 - 00:00",
+                    location: "Soho Square",
+                    location_it: "Soho Square"
+                },
+                {
+                    id: 4,
+                    name: "Pomodoro",
+                    name_it: "Pomodoro",
+                    image: "pizzeria.jpg",
+                    cuisine: "Italian",
+                    cuisine_it: "Italiana",
+                    category: "restaurant international",
+                    rating: 4.6,
+                    price_range: "$$$",
+                    description: "Traditional Italian restaurant serving handmade pasta, wood-fired pizzas, and classic Italian dishes.",
+                    description_it: "Ristorante italiano tradizionale che serve pasta fatta in casa, pizze al forno a legna e piatti classici italiani.",
+                    specialties: ["Wood-fired Pizza", "Homemade Pasta", "Osso Buco", "Panna Cotta"],
+                    specialties_it: ["Pizza al Forno a Legna", "Pasta Fatta in Casa", "Osso Buco", "Panna Cotta"],
+                    hours: "12:00 PM - 11:00 PM",
+                    hours_it: "12:00 - 23:00",
+                    location: "Naama Bay",
+                    location_it: "Naama Bay"
+                }
+            ];
+            
+            const cookingClasses = [
+                {
+                    id: 1,
+                    name: "Egyptian Cooking Masterclass",
+                    name_it: "Masterclass di Cucina Egiziana",
+                    image: "egyptian-restaurant.jpg",
+                    category: "cooking local",
+                    duration: "3 hours",
+                    duration_it: "3 ore",
+                    price: 45,
+                    description: "Learn to prepare authentic Egyptian dishes including koshari, molokhia, and traditional desserts.",
+                    description_it: "Impara a preparare autentici piatti egiziani inclusi koshari, molokhia e dolci tradizionali.",
+                    menu: ["Koshari (Egyptian national dish)", "Molokhia soup", "Traditional bread", "Basbousa dessert"],
+                    menu_it: ["Koshari (piatto nazionale egiziano)", "Zuppa di Molokhia", "Pane tradizionale", "Dolce Basbousa"],
+                    includes: ["All ingredients", "Recipe cards", "Cooking equipment", "Meal tasting", "Certificate"],
+                    includes_it: ["Tutti gli ingredienti", "Schede ricette", "Attrezzatura da cucina", "Degustazione pasto", "Certificato"],
+                    max_participants: 6,
+                    rating: 4.9
+                },
+                {
+                    id: 2,
+                    name: "Seafood Cooking Workshop",
+                    name_it: "Workshop di Cucina di Pesce",
+                    image: "seafood-restaurant.jpg",
+                    category: "cooking",
+                    duration: "2.5 hours",
+                    duration_it: "2,5 ore",
+                    price: 60,
+                    description: "Master the art of cooking fresh seafood with techniques from professional chefs using Red Sea catch.",
+                    description_it: "Padroneggia l'arte di cucinare pesce fresco con tecniche da chef professionisti usando il pescato del Mar Rosso.",
+                    menu: ["Grilled sea bass", "Seafood tagine", "Calamari rings", "Garlic butter sauce"],
+                    menu_it: ["Branzino grigliato", "Tagine di frutti di mare", "Anelli di calamaro", "Salsa al burro d'aglio"],
+                    includes: ["Fresh seafood", "Professional instruction", "Cooking tools", "Wine pairing", "Take-home recipes"],
+                    includes_it: ["Pesce fresco", "Istruzione professionale", "Strumenti da cucina", "Abbinamento vini", "Ricette da portare a casa"],
+                    max_participants: 4,
+                    rating: 4.8
+                },
+                {
+                    id: 3,
+                    name: "Mediterranean Cuisine Class",
+                    name_it: "Classe di Cucina Mediterranea",
+                    image: "pasta-class.jpg",
+                    category: "cooking international",
+                    duration: "3.5 hours",
+                    duration_it: "3,5 ore",
+                    price: 55,
+                    description: "Explore healthy Mediterranean cooking with fresh herbs, olive oils, and seasonal ingredients.",
+                    description_it: "Esplora la cucina mediterranea sana con erbe fresche, oli d'oliva e ingredienti stagionali.",
+                    menu: ["Greek salad", "Mediterranean fish", "Herb-crusted vegetables", "Baklava"],
+                    menu_it: ["Insalata greca", "Pesce mediterraneo", "Verdure con crosta di erbe", "Baklava"],
+                    includes: ["Organic ingredients", "Herb garden tour", "Nutritional guide", "Recipe booklet", "Certificate"],
+                    includes_it: ["Ingredienti biologici", "Tour giardino di erbe", "Guida nutrizionale", "Libretto ricette", "Certificato"],
+                    max_participants: 8,
+                    rating: 4.7
+                }
+            ];
+            
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            // Load restaurants
+            const restaurantsContainer = document.getElementById('restaurantsGrid');
+            restaurantsContainer.innerHTML = restaurants.map(restaurant => `
+                <div class="card fade-in dining-item" data-category="${restaurant.category}">
+                    <img src="images/${restaurant.image}" alt="${currentLang === 'it' ? restaurant.name_it : restaurant.name}" class="card-img">
+                    <div class="card-body">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-sm);">
+                            <h3 class="card-title">${currentLang === 'it' ? restaurant.name_it : restaurant.name}</h3>
+                            <span class="price-range">${restaurant.price_range}</span>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: var(--spacing-sm); color: var(--text-light); font-size: 0.9rem;">
+                            <span style="background: var(--bg-light); padding: 2px 6px; border-radius: 4px; margin-right: var(--spacing-sm);">
+                                ${currentLang === 'it' ? restaurant.cuisine_it : restaurant.cuisine}
+                            </span>
+                            <i class="fas fa-star" style="color: var(--accent-color); margin-right: 2px;"></i>
+                            <span>${restaurant.rating}</span>
+                        </div>
+                        
+                        <p class="card-text">${currentLang === 'it' ? restaurant.description_it : restaurant.description}</p>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <strong style="font-size: 0.9rem; color: var(--text-light);">
+                                <span data-en="Specialties:" data-it="Specialità:">Specialties:</span>
+                            </strong>
+                            <div style="margin-top: var(--spacing-xs);">
+                                ${(currentLang === 'it' && restaurant.specialties_it ? restaurant.specialties_it : restaurant.specialties).slice(0, 3).map(specialty => 
+                                    `<span style="background: var(--bg-light); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; margin-right: 4px;">${specialty}</span>`
+                                ).join('')}
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-sm); font-size: 0.85rem; color: var(--text-light);">
+                            <div>
+                                <i class="fas fa-clock"></i>
+                                <span>${currentLang === 'it' ? restaurant.hours_it : restaurant.hours}</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${currentLang === 'it' ? restaurant.location_it : restaurant.location}</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block book-restaurant-btn" 
+                                data-restaurant-id="${restaurant.id}"
+                                data-restaurant-name="${currentLang === 'it' ? restaurant.name_it : restaurant.name}">
+                            <i class="fas fa-utensils" style="margin-right: 6px;"></i>
+                            <span data-en="Reserve Table" data-it="Riserva Tavolo">Reserve Table</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Load cooking classes
+            const cookingContainer = document.getElementById('cookingClassesGrid');
+            cookingContainer.innerHTML = cookingClasses.map(cooking => `
+                <div class="card fade-in dining-item" data-category="${cooking.category}">
+                    <img src="images/${cooking.image}" alt="${currentLang === 'it' ? cooking.name_it : cooking.name}" class="card-img">
+                    <div class="card-body">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-sm);">
+                            <h3 class="card-title">${currentLang === 'it' ? cooking.name_it : cooking.name}</h3>
+                            <span class="excursion-price">$${cooking.price}</span>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: var(--spacing-sm); color: var(--text-light); font-size: 0.9rem;">
+                            <i class="fas fa-clock" style="margin-right: 4px;"></i>
+                            <span style="margin-right: var(--spacing-sm);">${currentLang === 'it' ? cooking.duration_it : cooking.duration}</span>
+                            <i class="fas fa-star" style="color: var(--accent-color); margin-right: 2px;"></i>
+                            <span>${cooking.rating}</span>
+                        </div>
+                        
+                        <p class="card-text">${currentLang === 'it' ? cooking.description_it : cooking.description}</p>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <strong style="font-size: 0.9rem; color: var(--text-light);">
+                                <span data-en="You'll make:" data-it="Preparerai:">You'll make:</span>
+                            </strong>
+                            <div style="margin-top: var(--spacing-xs);">
+                                ${(currentLang === 'it' && cooking.menu_it ? cooking.menu_it : cooking.menu).slice(0, 3).map(item => 
+                                    `<div style="display: flex; align-items: center; margin-bottom: 2px; font-size: 0.85rem;">
+                                        <i class="fas fa-check" style="color: var(--success-color); margin-right: 6px; font-size: 0.7rem;"></i>
+                                        <span>${item}</span>
+                                    </div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: var(--spacing-sm); font-size: 0.85rem; color: var(--text-light);">
+                            <i class="fas fa-users"></i>
+                            <span data-en="Max" data-it="Max">Max</span> ${cooking.max_participants} 
+                            <span data-en="participants" data-it="partecipanti">participants</span>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block book-cooking-btn" 
+                                data-cooking-id="${cooking.id}"
+                                data-cooking-name="${currentLang === 'it' ? cooking.name_it : cooking.name}"
+                                data-cooking-price="${cooking.price}">
+                            <i class="fas fa-chef-hat" style="margin-right: 6px;"></i>
+                            <span data-en="Book Class" data-it="Prenota Lezione">Book Class</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Trigger fade-in animation
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+            }, 100);
+            
+            // Add booking button handlers
+            document.querySelectorAll('.book-restaurant-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const restaurantId = this.dataset.restaurantId;
+                    const restaurantName = this.dataset.restaurantName;
+                    openRestaurantModal(restaurantId, restaurantName);
+                });
+            });
+            
+            document.querySelectorAll('.book-cooking-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const cookingId = this.dataset.cookingId;
+                    const cookingName = this.dataset.cookingName;
+                    const cookingPrice = this.dataset.cookingPrice;
+                    openCookingModal(cookingId, cookingName, cookingPrice);
+                });
+            });
+        }
+        
+        function openRestaurantModal(restaurantId, restaurantName) {
+            const modal = document.getElementById('restaurantModal');
+            const modalTitle = document.getElementById('restaurantModalTitle');
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            modalTitle.textContent = currentLang === 'it' ? `Prenotazione: ${restaurantName}` : `Reservation: ${restaurantName}`;
+            document.getElementById('restaurantName').value = restaurantName;
+            
+            // Set minimum date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('restaurantDate').min = tomorrow.toISOString().split('T')[0];
+            
+            // Store booking data
+            modal.dataset.restaurantId = restaurantId;
+            modal.dataset.restaurantName = restaurantName;
+            
+            modal.style.display = 'flex';
+        }
+        
+        function openCookingModal(cookingId, cookingName, cookingPrice) {
+            const modal = document.getElementById('cookingModal');
+            const modalTitle = document.getElementById('cookingModalTitle');
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            modalTitle.textContent = currentLang === 'it' ? `Prenota: ${cookingName}` : `Book: ${cookingName}`;
+            document.getElementById('cookingClassName').value = cookingName;
+            
+            // Set minimum date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('cookingDate').min = tomorrow.toISOString().split('T')[0];
+            
+            // Store booking data
+            modal.dataset.cookingId = cookingId;
+            modal.dataset.cookingName = cookingName;
+            modal.dataset.cookingPrice = cookingPrice;
+            
+            // Reset form and update price
+            document.getElementById('cookingBookingForm').reset();
+            updateCookingPrice();
+            
+            modal.style.display = 'flex';
+        }
+        
+        function updateCookingPrice() {
+            const modal = document.getElementById('cookingModal');
+            const pricePerPerson = parseInt(modal.dataset.cookingPrice);
+            const participantCount = parseInt(document.getElementById('cookingParticipants').value);
+            const total = pricePerPerson * participantCount;
+            
+            document.getElementById('cookingPricePerPerson').textContent = `$${pricePerPerson}`;
+            document.getElementById('cookingParticipantsDisplay').textContent = participantCount;
+            document.getElementById('cookingTotal').textContent = `$${total}`;
+        }
+        
+        // Modal event listeners
+        document.getElementById('restaurantModalClose').addEventListener('click', function() {
+            document.getElementById('restaurantModal').style.display = 'none';
+        });
+        
+        document.getElementById('cookingModalClose').addEventListener('click', function() {
+            document.getElementById('cookingModal').style.display = 'none';
+        });
+        
+        document.getElementById('cookingParticipants').addEventListener('change', updateCookingPrice);
+        
+        // Form submissions
+        document.getElementById('restaurantBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const modal = document.getElementById('restaurantModal');
+            const restaurantName = modal.dataset.restaurantName;
+            const date = document.getElementById('restaurantDate').value;
+            const time = document.getElementById('restaurantTime').value;
+            const guests = document.getElementById('restaurantGuests').value;
+            const requests = document.getElementById('specialRequests').value;
+            
+            if (!date || !time) {
+                alert('Please select date and time');
+                return;
+            }
+            
+            // Store booking data
+            const bookingData = {
+                type: 'restaurant',
+                restaurantName: restaurantName,
+                date: date,
+                time: time,
+                guests: guests,
+                specialRequests: requests
+            };
+            
+            localStorage.setItem('restaurantBooking', JSON.stringify(bookingData));
+            
+            // Show success message
+            const currentLang = localStorage.getItem('language') || 'en';
+            alert(currentLang === 'it' ? 'Prenotazione confermata!' : 'Reservation confirmed!');
+            
+            modal.style.display = 'none';
+        });
+        
+        document.getElementById('cookingBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const modal = document.getElementById('cookingModal');
+            const cookingName = modal.dataset.cookingName;
+            const date = document.getElementById('cookingDate').value;
+            const time = document.getElementById('cookingTime').value;
+            const participants = document.getElementById('cookingParticipants').value;
+            const total = document.getElementById('cookingTotal').textContent;
+            
+            if (!date || !time) {
+                alert('Please select date and time');
+                return;
+            }
+            
+            // Store booking data
+            const bookingData = {
+                type: 'cooking',
+                cookingName: cookingName,
+                date: date,
+                time: time,
+                participants: participants,
+                total: total
+            };
+            
+            localStorage.setItem('cookingBooking', JSON.stringify(bookingData));
+            
+            // Show success message
+            const currentLang = localStorage.getItem('language') || 'en';
+            alert(currentLang === 'it' ? 'Prenotazione confermata!' : 'Booking confirmed!');
+            
+            modal.style.display = 'none';
+        });
+        
+        // Close modals when clicking outside
+        document.getElementById('restaurantModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+        
+        document.getElementById('cookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

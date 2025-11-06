@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excursions - Patrizia Stays</title>
+    <meta name="description" content="Discover amazing excursions in Sharm El Sheikh. From snorkeling and diving to desert safaris and cultural tours.">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">Patrizia Stays</a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="navbar-nav" id="navbarNav">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-it="Casa">Home</a></li>
+                <li><a href="apartments.html" class="nav-link" data-en="Apartments" data-it="Appartamenti">Apartments</a></li>
+                <li><a href="excursions.html" class="nav-link active" data-en="Excursions" data-it="Escursioni">Excursions</a></li>
+                <li><a href="dining.html" class="nav-link" data-en="Dining" data-it="Ristorazione">Dining</a></li>
+                <li><a href="to-visit.html" class="nav-link" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></li>
+                <li><a href="reservation.html" class="nav-link" data-en="Book Now" data-it="Prenota Ora">Book Now</a></li>
+            </ul>
+            
+            <div class="language-switcher" id="languageSwitcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="it">IT</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="section" style="padding-top: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; text-align: center;">
+        <div class="container">
+            <h1 data-en="Amazing Excursions" data-it="Escursioni Straordinarie">Amazing Excursions</h1>
+            <p data-en="Discover the wonders of Sharm El Sheikh with our curated selection of unforgettable experiences" data-it="Scopri le meraviglie di Sharm El Sheikh con la nostra selezione curata di esperienze indimenticabili">
+                Discover the wonders of Sharm El Sheikh with our curated selection of unforgettable experiences
+            </p>
+        </div>
+    </section>
+
+    <!-- Filters -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="filters" id="excursionFilters">
+                <button class="filter-btn active" data-filter="all" data-en="All Excursions" data-it="Tutte le Escursioni">All Excursions</button>
+                <button class="filter-btn" data-filter="water" data-en="Water Activities" data-it="Attività Acquatiche">Water Activities</button>
+                <button class="filter-btn" data-filter="desert" data-en="Desert Adventures" data-it="Avventure nel Deserto">Desert Adventures</button>
+                <button class="filter-btn" data-filter="cultural" data-en="Cultural Tours" data-it="Tour Culturali">Cultural Tours</button>
+                <button class="filter-btn" data-filter="family" data-en="Family Friendly" data-it="Adatto alle Famiglie">Family Friendly</button>
+                <button class="filter-btn" data-filter="luxury" data-en="Luxury Experiences" data-it="Esperienze di Lusso">Luxury Experiences</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Excursions Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-2" id="excursionsGrid">
+                <!-- Excursions will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Modal -->
+    <div class="modal" id="bookingModal">
+        <div class="modal-content" style="max-width: 500px;">
+            <div class="modal-header">
+                <h3 id="modalTitle" data-en="Book Excursion" data-it="Prenota Escursione">Book Excursion</h3>
+                <button class="modal-close" id="modalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="excursionBookingForm">
+                    <div class="form-group">
+                        <label data-en="Select Date" data-it="Seleziona Data">Select Date</label>
+                        <input type="date" class="form-control" id="excursionDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Number of Participants" data-it="Numero di Partecipanti">Number of Participants</label>
+                        <select class="form-control" id="participantCount">
+                            <option value="1">1 Person</option>
+                            <option value="2" selected>2 People</option>
+                            <option value="3">3 People</option>
+                            <option value="4">4 People</option>
+                            <option value="5">5 People</option>
+                            <option value="6">6 People</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Pickup Location" data-it="Punto di Prelievo">Pickup Location</label>
+                        <select class="form-control" id="pickupLocation">
+                            <option value="hotel" data-en="Hotel Pickup" data-it="Prelievo in Hotel">Hotel Pickup</option>
+                            <option value="naama-bay" data-en="Naama Bay" data-it="Naama Bay">Naama Bay</option>
+                            <option value="nabq-bay" data-en="Nabq Bay" data-it="Nabq Bay">Nabq Bay</option>
+                        </select>
+                    </div>
+                    
+                    <div class="booking-summary" id="excursionSummary">
+                        <div class="summary-item">
+                            <span data-en="Price per person" data-it="Prezzo per persona">Price per person</span>
+                            <span id="pricePerPerson">$0</span>
+                        </div>
+                        <div class="summary-item">
+                            <span data-en="Participants" data-it="Partecipanti">Participants</span>
+                            <span id="participantDisplay">2</span>
+                        </div>
+                        <div class="summary-item">
+                            <span data-en="Total" data-it="Totale">Total</span>
+                            <span id="excursionTotal">$0</span>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block" data-en="Confirm Booking" data-it="Conferma Prenotazione">
+                        Confirm Booking
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-en="Patrizia Stays" data-it="Patrizia Stays">Patrizia Stays</h4>
+                    <p data-en="Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences." data-it="Vivi il lusso a Sharm El Sheikh con i nostri appartamenti premium ed esperienze curate.">
+                        Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences.
+                    </p>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-facebook fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-tripadvisor fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-it="Collegamenti Rapidi">Quick Links</h4>
+                    <p><a href="apartments.html" data-en="Apartments" data-it="Appartamenti">Apartments</a></p>
+                    <p><a href="excursions.html" data-en="Excursions" data-it="Escursioni">Excursions</a></p>
+                    <p><a href="dining.html" data-en="Dining" data-it="Ristorazione">Dining</a></p>
+                    <p><a href="to-visit.html" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></p>
+                    <p><a href="reservation.html" data-en="Book Now" data-it="Prenota Ora">Book Now</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Contact Info" data-it="Informazioni di Contatto">Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +20 100 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@patriziastays.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>
+                        <span data-en="Naama Bay, Sharm El Sheikh, Egypt" data-it="Naama Bay, Sharm El Sheikh, Egitto">
+                            Naama Bay, Sharm El Sheikh, Egypt
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Newsletter" data-it="Newsletter">Newsletter</h4>
+                    <p data-en="Subscribe to get special offers and updates." data-it="Iscriviti per ricevere offerte speciali e aggiornamenti.">
+                        Subscribe to get special offers and updates.
+                    </p>
+                    <form style="margin-top: var(--spacing-md);">
+                        <input type="email" placeholder="Your email" class="form-control" style="margin-bottom: var(--spacing-sm);" data-en-placeholder="Your email" data-it-placeholder="La tua email">
+                        <button type="submit" class="btn btn-primary btn-block" data-en="Subscribe" data-it="Iscriviti">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Patrizia Stays. 
+                    <span data-en="All rights reserved." data-it="Tutti i diritti riservati.">
+                        All rights reserved.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/excursions.js"></script>
+    <script>
+        // Load excursions when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadExcursions();
+        });
+        
+        function loadExcursions() {
+            const excursions = [
+                {
+                    id: 1,
+                    name: "Ras Mohammed Snorkeling",
+                    name_it: "Snorkeling a Ras Mohammed",
+                    image: "snorkeling.jpg",
+                    price: 45,
+                    duration: "6 hours",
+                    duration_it: "6 ore",
+                    category: "water luxury",
+                    description: "Explore the stunning coral reefs of Ras Mohammed National Park with professional guides. Includes equipment, lunch, and hotel pickup.",
+                    description_it: "Esplora le straordinarie barriere coralline del Parco Nazionale di Ras Mohammed con guide professionali. Include attrezzatura, pranzo e prelievo in hotel.",
+                    highlights: ["Snorkeling equipment included", "Professional guides", "Lunch provided", "Hotel pickup/drop-off", "National park fees included"],
+                    highlights_it: ["Attrezzatura per snorkeling inclusa", "Guide professionali", "Pranzo fornito", "Prelievo/consegna in hotel", "Tasse parco nazionale incluse"],
+                    rating: 4.8,
+                    reviews: 127
+                },
+                {
+                    id: 2,
+                    name: "Desert Safari & Bedouin Dinner",
+                    name_it: "Safari nel Deserto & Cena Beduina",
+                    image: "desert-safari.jpg",
+                    price: 65,
+                    duration: "8 hours",
+                    duration_it: "8 ore",
+                    category: "desert cultural",
+                    description: "Experience the magic of the Sinai desert with quad biking, camel rides, and traditional Bedouin dinner under the stars.",
+                    description_it: "Vivi la magia del deserto del Sinai con quad, cammelli e cena tradizionale beduina sotto le stelle.",
+                    highlights: ["Quad biking adventure", "Camel riding", "Bedouin camp visit", "Traditional dinner", "Stargazing experience"],
+                    highlights_it: ["Avventura in quad", "Cavalcata di cammelli", "Visita campo beduino", "Cena tradizionale", "Esperienza di osservazione delle stelle"],
+                    rating: 4.6,
+                    reviews: 89
+                },
+                {
+                    id: 3,
+                    name: "Scuba Diving for Beginners",
+                    name_it: "Immersioni Subacquee per Principianti",
+                    image: "scuba-diving.jpg",
+                    price: 85,
+                    duration: "4 hours",
+                    duration_it: "4 ore",
+                    category: "water luxury",
+                    description: "Discover the underwater world with certified instructors. Perfect for first-time divers. Includes all equipment and training.",
+                    description_it: "Scopri il mondo sottomarino con istruttori certificati. Perfetto per i sub esordienti. Include tutta l'attrezzatura e la formazione.",
+                    highlights: ["Professional instructors", "All equipment included", "Training session", "Shallow water dive", "Underwater photos"],
+                    highlights_it: ["Istruttori professionali", "Tutta l'attrezzatura inclusa", "Sessione di formazione", "Immersione in acque basse", "Foto subacquee"],
+                    rating: 4.9,
+                    reviews: 156
+                },
+                {
+                    id: 4,
+                    name: "Cairo Day Trip & Pyramids",
+                    name_it: "Gita di un Giorno al Cairo & Piramidi",
+                    image: "naama-bay.jpg",
+                    price: 120,
+                    duration: "14 hours",
+                    duration_it: "14 ore",
+                    category: "cultural luxury",
+                    description: "Visit the Great Pyramids of Giza, Sphinx, and Egyptian Museum. Includes flights, lunch, and professional guide.",
+                    description_it: "Visita le Grandi Piramidi di Giza, la Sfinge e il Museo Egizio. Include voli, pranzo e guida professionale.",
+                    highlights: ["Pyramids of Giza", "The Sphinx", "Egyptian Museum", "Professional guide", "Lunch included"],
+                    highlights_it: ["Piramidi di Giza", "La Sfinge", "Museo Egizio", "Guida professionale", "Pranzo incluso"],
+                    rating: 4.7,
+                    reviews: 203
+                },
+                {
+                    id: 5,
+                    name: "Glass Bottom Boat Trip",
+                    name_it: "Gita in Barca con Fondo di Vetro",
+                    image: "glass-boat.jpg",
+                    price: 35,
+                    duration: "2 hours",
+                    duration_it: "2 ore",
+                    category: "water family",
+                    description: "Perfect for families! See the colorful coral reefs and marine life without getting wet. Great for all ages.",
+                    description_it: "Perfetto per le famiglie! Vedi le colorate barriere coralline e la vita marina senza bagnarsi. Ottimo per tutte le età.",
+                    highlights: ["Glass bottom viewing", "Marine life viewing", "Family friendly", "Professional crew", "Refreshments included"],
+                    highlights_it: ["Osservazione dal fondo di vetro", "Vista vita marina", "Adatto alle famiglie", "Equipaggio professionale", "Rinfreschi inclusi"],
+                    rating: 4.4,
+                    reviews: 67
+                },
+                {
+                    id: 6,
+                    name: "Luxury Yacht Cruise",
+                    name_it: "Crociera in Yacht di Lusso",
+                    image: "naama-bay.jpg",
+                    price: 150,
+                    duration: "6 hours",
+                    duration_it: "6 ore",
+                    category: "water luxury",
+                    description: "Sail in style on a luxury yacht with gourmet lunch, snorkeling stops, and premium service. Perfect for special occasions.",
+                    description_it: "Naviga con stile su uno yacht di lusso con pranzo gourmet, soste per snorkeling e servizio premium. Perfetto per occasioni speciali.",
+                    highlights: ["Luxury yacht", "Gourmet lunch", "Snorkeling equipment", "Premium service", "Open bar"],
+                    highlights_it: ["Yacht di lusso", "Pranzo gourmet", "Attrezzatura snorkeling", "Servizio premium", "Bar aperto"],
+                    rating: 4.9,
+                    reviews: 45
+                },
+                {
+                    id: 7,
+                    name: "Camel Trek & Sunset",
+                    name_it: "Escursione in Cammello & Tramonto",
+                    image: "desert-safari.jpg",
+                    price: 40,
+                    duration: "3 hours",
+                    duration_it: "3 ore",
+                    category: "desert family",
+                    description: "Experience the traditional way of desert travel with a peaceful camel ride ending with spectacular sunset views.",
+                    description_it: "Vivi il modo tradizionale di viaggiare nel deserto con una tranquilla cavalcata di cammelli che termina con spettacolari viste al tramonto.",
+                    highlights: ["Camel riding", "Sunset views", "Traditional experience", "Photo opportunities", "Refreshments"],
+                    highlights_it: ["Cavalcata di cammelli", "Viste al tramonto", "Esperienza tradizionale", "Opportunità fotografiche", "Rinfreschi"],
+                    rating: 4.3,
+                    reviews: 78
+                },
+                {
+                    id: 8,
+                    name: "St. Catherine's Monastery",
+                    name_it: "Monastero di Santa Caterina",
+                    image: "st-catherine-monastery.jpg",
+                    price: 70,
+                    duration: "10 hours",
+                    duration_it: "10 ore",
+                    category: "cultural",
+                    description: "Visit the oldest Christian monastery with burning bush and ancient manuscripts. Includes Mount Sinai sunrise option.",
+                    description_it: "Visita il più antico monastero cristiano con il roveto ardente e antichi manoscritti. Include opzione alba sul Monte Sinai.",
+                    highlights: ["Ancient monastery", "Burning bush", "Historical significance", "Mount Sinai option", "Professional guide"],
+                    highlights_it: ["Monastero antico", "Roveto ardente", "Importanza storica", "Opzione Monte Sinai", "Guida professionale"],
+                    rating: 4.5,
+                    reviews: 92
+                }
+            ];
+            
+            const container = document.getElementById('excursionsGrid');
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            container.innerHTML = excursions.map(excursion => `
+                <div class="card fade-in excursion-item" data-category="${excursion.category}">
+                    <img src="images/${excursion.image}" alt="${currentLang === 'it' ? excursion.name_it : excursion.name}" class="card-img">
+                    <div class="card-body">
+                        <div style="display: flex; justify-content: between; align-items: flex-start; margin-bottom: var(--spacing-sm);">
+                            <h3 class="card-title">${currentLang === 'it' ? excursion.name_it : excursion.name}</h3>
+                            <span class="excursion-price">$${excursion.price}</span>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: var(--spacing-sm); color: var(--text-light); font-size: 0.9rem;">
+                            <i class="fas fa-clock" style="margin-right: 4px;"></i>
+                            <span style="margin-right: var(--spacing-sm);">${currentLang === 'it' ? excursion.duration_it : excursion.duration}</span>
+                            <i class="fas fa-star" style="color: var(--accent-color); margin-right: 2px;"></i>
+                            <span>${excursion.rating} (${excursion.reviews})</span>
+                        </div>
+                        
+                        <p class="card-text">${currentLang === 'it' ? excursion.description_it : excursion.description}</p>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <strong style="font-size: 0.9rem; color: var(--text-light);">
+                                <span data-en="Highlights:" data-it="Punti Salienti:">Highlights:</span>
+                            </strong>
+                            <div style="margin-top: var(--spacing-xs);">
+                                ${(currentLang === 'it' && excursion.highlights_it ? excursion.highlights_it : excursion.highlights).slice(0, 3).map(highlight => 
+                                    `<div style="display: flex; align-items: center; margin-bottom: 2px; font-size: 0.85rem;">
+                                        <i class="fas fa-check" style="color: var(--success-color); margin-right: 6px; font-size: 0.7rem;"></i>
+                                        <span>${highlight}</span>
+                                    </div>`
+                                ).join('')}
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block book-excursion-btn" 
+                                data-excursion-id="${excursion.id}"
+                                data-excursion-name="${currentLang === 'it' ? excursion.name_it : excursion.name}"
+                                data-excursion-price="${excursion.price}">
+                            <i class="fas fa-calendar-alt" style="margin-right: 6px;"></i>
+                            <span data-en="Book Now" data-it="Prenota Ora">Book Now</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Trigger fade-in animation
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+            }, 100);
+            
+            // Add booking button handlers
+            document.querySelectorAll('.book-excursion-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const excursionId = this.dataset.excursionId;
+                    const excursionName = this.dataset.excursionName;
+                    const excursionPrice = this.dataset.excursionPrice;
+                    
+                    openBookingModal(excursionId, excursionName, excursionPrice);
+                });
+            });
+        }
+        
+        function openBookingModal(excursionId, excursionName, excursionPrice) {
+            const modal = document.getElementById('bookingModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            modalTitle.textContent = currentLang === 'it' ? `Prenota: ${excursionName}` : `Book: ${excursionName}`;
+            
+            // Set minimum date to tomorrow
+            const tomorrow = new Date();
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            document.getElementById('excursionDate').min = tomorrow.toISOString().split('T')[0];
+            
+            // Store booking data
+            modal.dataset.excursionId = excursionId;
+            modal.dataset.excursionName = excursionName;
+            modal.dataset.excursionPrice = excursionPrice;
+            
+            // Reset form
+            document.getElementById('excursionBookingForm').reset();
+            updateExcursionPrice();
+            
+            modal.style.display = 'flex';
+        }
+        
+        function updateExcursionPrice() {
+            const pricePerPerson = parseInt(document.getElementById('bookingModal').dataset.excursionPrice);
+            const participantCount = parseInt(document.getElementById('participantCount').value);
+            const total = pricePerPerson * participantCount;
+            
+            document.getElementById('pricePerPerson').textContent = `$${pricePerPerson}`;
+            document.getElementById('participantDisplay').textContent = participantCount;
+            document.getElementById('excursionTotal').textContent = `$${total}`;
+        }
+        
+        // Modal event listeners
+        document.getElementById('modalClose').addEventListener('click', function() {
+            document.getElementById('bookingModal').style.display = 'none';
+        });
+        
+        document.getElementById('participantCount').addEventListener('change', updateExcursionPrice);
+        
+        document.getElementById('excursionBookingForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const modal = document.getElementById('bookingModal');
+            const excursionId = modal.dataset.excursionId;
+            const excursionName = modal.dataset.excursionName;
+            const date = document.getElementById('excursionDate').value;
+            const participants = document.getElementById('participantCount').value;
+            const pickup = document.getElementById('pickupLocation').value;
+            const total = document.getElementById('excursionTotal').textContent;
+            
+            if (!date) {
+                alert('Please select a date');
+                return;
+            }
+            
+            // Store booking data
+            const bookingData = {
+                type: 'excursion',
+                excursionId: excursionId,
+                excursionName: excursionName,
+                date: date,
+                participants: participants,
+                pickup: pickup,
+                total: total
+            };
+            
+            localStorage.setItem('excursionBooking', JSON.stringify(bookingData));
+            
+            // Show success message
+            const currentLang = localStorage.getItem('language') || 'en';
+            alert(currentLang === 'it' ? 'Prenotazione confermata!' : 'Booking confirmed!');
+            
+            modal.style.display = 'none';
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('bookingModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                this.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

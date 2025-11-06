@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Places to Visit - Patrizia Stays</title>
+    <meta name="description" content="Discover the best attractions and places to visit in Sharm El Sheikh. From beaches to historical sites and natural wonders.">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">Patrizia Stays</a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="navbar-nav" id="navbarNav">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-it="Casa">Home</a></li>
+                <li><a href="apartments.html" class="nav-link" data-en="Apartments" data-it="Appartamenti">Apartments</a></li>
+                <li><a href="excursions.html" class="nav-link" data-en="Excursions" data-it="Escursioni">Excursions</a></li>
+                <li><a href="dining.html" class="nav-link" data-en="Dining" data-it="Ristorazione">Dining</a></li>
+                <li><a href="to-visit.html" class="nav-link active" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></li>
+                <li><a href="reservation.html" class="nav-link" data-en="Book Now" data-it="Prenota Ora">Book Now</a></li>
+            </ul>
+            
+            <div class="language-switcher" id="languageSwitcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="it">IT</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="section" style="padding-top: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; text-align: center;">
+        <div class="container">
+            <h1 data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</h1>
+            <p data-en="Discover the most amazing attractions and hidden gems in Sharm El Sheikh" data-it="Scopri le attrazioni più straordinarie e i tesori nascosti di Sharm El Sheikh">
+                Discover the most amazing attractions and hidden gems in Sharm El Sheikh
+            </p>
+        </div>
+    </section>
+
+    <!-- Attraction Filters -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="filters" id="attractionFilters">
+                <button class="filter-btn active" data-filter="all" data-en="All Attractions" data-it="Tutte le Attrazioni">All Attractions</button>
+                <button class="filter-btn" data-filter="beach" data-en="Beaches" data-it="Spiagge">Beaches</button>
+                <button class="filter-btn" data-filter="nature" data-en="Nature" data-it="Natura">Nature</button>
+                <button class="filter-btn" data-filter="historical" data-en="Historical" data-it="Storico">Historical</button>
+                <button class="filter-btn" data-filter="entertainment" data-en="Entertainment" data-it="Intrattenimento">Entertainment</button>
+                <button class="filter-btn" data-filter="shopping" data-en="Shopping" data-it="Shopping">Shopping</button>
+                <button class="filter-btn" data-filter="family" data-en="Family Friendly" data-it="Adatto alle Famiglie">Family Friendly</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Attractions Grid -->
+    <section class="section">
+        <div class="container">
+            <div class="grid grid-3" id="attractionsGrid">
+                <!-- Attractions will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Attraction Detail Modal -->
+    <div class="modal" id="attractionModal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3 id="attractionModalTitle" data-en="Attraction Details" data-it="Dettagli Attrazione">Attraction Details</h3>
+                <button class="modal-close" id="attractionModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="attractionModalContent">
+                    <!-- Content will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-en="Patrizia Stays" data-it="Patrizia Stays">Patrizia Stays</h4>
+                    <p data-en="Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences." data-it="Vivi il lusso a Sharm El Sheikh con i nostri appartamenti premium ed esperienze curate.">
+                        Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences.
+                    </p>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-facebook fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-tripadvisor fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-it="Collegamenti Rapidi">Quick Links</h4>
+                    <p><a href="apartments.html" data-en="Apartments" data-it="Appartamenti">Apartments</a></p>
+                    <p><a href="excursions.html" data-en="Excursions" data-it="Escursioni">Excursions</a></p>
+                    <p><a href="dining.html" data-en="Dining" data-it="Ristorazione">Dining</a></p>
+                    <p><a href="to-visit.html" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></p>
+                    <p><a href="reservation.html" data-en="Book Now" data-it="Prenota Ora">Book Now</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Contact Info" data-it="Informazioni di Contatto">Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +20 100 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@patriziastays.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>
+                        <span data-en="Naama Bay, Sharm El Sheikh, Egypt" data-it="Naama Bay, Sharm El Sheikh, Egitto">
+                            Naama Bay, Sharm El Sheikh, Egypt
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Newsletter" data-it="Newsletter">Newsletter</h4>
+                    <p data-en="Subscribe to get special offers and updates." data-it="Iscriviti per ricevere offerte speciali e aggiornamenti.">
+                        Subscribe to get special offers and updates.
+                    </p>
+                    <form style="margin-top: var(--spacing-md);">
+                        <input type="email" placeholder="Your email" class="form-control" style="margin-bottom: var(--spacing-sm);" data-en-placeholder="Your email" data-it-placeholder="La tua email">
+                        <button type="submit" class="btn btn-primary btn-block" data-en="Subscribe" data-it="Iscriviti">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Patrizia Stays. 
+                    <span data-en="All rights reserved." data-it="Tutti i diritti riservati.">
+                        All rights reserved.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/to-visit.js"></script>
+    <script>
+        // Load attractions when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadAttractions();
+        });
+        
+        function loadAttractions() {
+            const attractions = [
+                {
+                    id: 1,
+                    name: "Naama Bay Beach",
+                    name_it: "Spiaggia di Naama Bay",
+                    image: "naama-bay.jpg",
+                    category: "beach family entertainment",
+                    rating: 4.6,
+                    description: "The most popular beach in Sharm El Sheikh with crystal clear waters, perfect for swimming and snorkeling.",
+                    description_it: "La spiaggia più popolare di Sharm El Sheikh con acque cristalline, perfetta per nuotare e fare snorkeling.",
+                    highlights: ["White sand beach", "Coral reef snorkeling", "Water sports", "Beach clubs"],
+                    highlights_it: ["Spiaggia di sabbia bianca", "Snorkeling nella barriera corallina", "Sport acquatici", "Beach club"],
+                    best_time: "Morning to sunset",
+                    best_time_it: "Mattina fino al tramonto",
+                    duration: "Half day",
+                    duration_it: "Mezza giornata",
+                    price_range: "Free - $20",
+                    price_range_it: "Gratuito - $20",
+                    location: "Naama Bay",
+                    location_it: "Naama Bay",
+                    tips: ["Bring sunscreen", "Arrive early for best spots", "Try the local beach cafes"],
+                    tips_it: ["Porta crema solare", "Arriva presto per i migliori posti", "Prova i caffè locali sulla spiaggia"]
+                },
+                {
+                    id: 2,
+                    name: "Ras Mohammed National Park",
+                    name_it: "Parco Nazionale Ras Mohammed",
+                    image: "ras-mohammed.jpg",
+                    category: "nature beach",
+                    rating: 4.8,
+                    description: "Egypt's first national park featuring pristine coral reefs, mangrove forests, and diverse marine life.",
+                    description_it: "Il primo parco nazionale d'Egitto con barriere coralline incontaminate, foreste di mangrovie e vita marina diversificata.",
+                    highlights: ["World-class diving", "Mangrove channel", "Magic Lake", "Shark Observatory"],
+                    highlights_it: ["Immersioni di classe mondiale", "Canale delle mangrovie", "Lago Magico", "Osservatorio degli Squali"],
+                    best_time: "Early morning",
+                    best_time_it: "Prima mattina",
+                    duration: "Full day",
+                    duration_it: "Giornata intera",
+                    price_range: "$25 - $50",
+                    price_range_it: "$25 - $50",
+                    location: "30km south of Sharm",
+                    location_it: "30km a sud di Sharm",
+                    tips: ["Book diving trips in advance", "Bring underwater camera", "Wear reef-safe sunscreen"],
+                    tips_it: ["Prenota le immersioni in anticipo", "Porta fotocamera subacquea", "Indossa crema solare sicura per la barriera"]
+                },
+                {
+                    id: 3,
+                    name: "Old Market (Sharm El Maya)",
+                    name_it: "Vecchio Mercato (Sharm El Maya)",
+                    image: "old-market.jpg",
+                    category: "shopping historical",
+                    rating: 4.4,
+                    description: "Traditional Egyptian market offering spices, textiles, jewelry, and authentic local experiences.",
+                    description_it: "Mercato egiziano tradizionale che offre spezie, tessuti, gioielli ed esperienze locali autentiche.",
+                    highlights: ["Spice markets", "Traditional crafts", "Local restaurants", "Authentic atmosphere"],
+                    highlights_it: ["Mercati delle spezie", "Artigianato tradizionale", "Ristoranti locali", "Atmosfera autentica"],
+                    best_time: "Evening",
+                    best_time_it: "Sera",
+                    duration: "2-3 hours",
+                    duration_it: "2-3 ore",
+                    price_range: "$10 - $100",
+                    price_range_it: "$10 - $100",
+                    location: "Sharm El Maya",
+                    location_it: "Sharm El Maya",
+                    tips: ["Practice haggling", "Try local street food", "Visit in the evening for best atmosphere"],
+                    tips_it: ["Pratica il contrattare", "Prova il cibo di strada locale", "Visita la sera per la migliore atmosfera"]
+                },
+                {
+                    id: 4,
+                    name: "Soho Square",
+                    name_it: "Soho Square",
+                    image: "naama-bay.jpg",
+                    category: "entertainment shopping family",
+                    rating: 4.5,
+                    description: "Modern entertainment complex with restaurants, shops, ice skating rink, and nightly shows.",
+                    description_it: "Moderno complesso di intrattenimento con ristoranti, negozi, pista di pattinaggio sul ghiaccio e spettacoli serali.",
+                    highlights: ["Ice skating rink", "Fountain shows", "International restaurants", "Shopping outlets"],
+                    highlights_it: ["Pista di pattinaggio sul ghiaccio", "Spettacoli di fontane", "Ristoranti internazionali", "Negozi outlet"],
+                    best_time: "Evening",
+                    best_time_it: "Sera",
+                    duration: "3-4 hours",
+                    duration_it: "3-4 ore",
+                    price_range: "Free - $30",
+                    price_range_it: "Gratuito - $30",
+                    location: "Sinai Grand Resort",
+                    location_it: "Sinai Grand Resort",
+                    tips: ["Check show times in advance", "Try the ice skating", "Great for families"],
+                    tips_it: ["Controlla gli orari degli spettacoli", "Prova il pattinaggio sul ghiaccio", "Ottimo per le famiglie"]
+                },
+                {
+                    id: 5,
+                    name: "Mount Sinai",
+                    name_it: "Monte Sinai",
+                    image: "st-catherine.jpg",
+                    category: "nature historical",
+                    rating: 4.7,
+                    description: "Sacred mountain where Moses received the Ten Commandments, offering spectacular sunrise views.",
+                    description_it: "Montagna sacra dove Mosè ricevette i Dieci Comandamenti, offrendo spettacolari viste all'alba.",
+                    highlights: ["Sunrise trek", "St. Catherine's Monastery", "Sacred significance", "Panoramic views"],
+                    highlights_it: ["Trek all'alba", "Monastero di Santa Caterina", "Significato sacro", "Viste panoramiche"],
+                    best_time: "Night (for sunrise)",
+                    best_time_it: "Notte (per l'alba)",
+                    duration: "Full day",
+                    duration_it: "Giornata intera",
+                    price_range: "$40 - $80",
+                    price_range_it: "$40 - $80",
+                    location: "2 hours from Sharm",
+                    location_it: "2 ore da Sharm",
+                    tips: ["Start climb at 2 AM", "Bring warm clothes", "Hire local guide"],
+                    tips_it: ["Inizia la scalata alle 2 AM", "Porta vestiti caldi", "Assumi guida locale"]
+                },
+                {
+                id: 6,
+                name: "St. Catherine's Monastery",
+                name_it: "Monastero di Santa Caterina",
+                image: "st-catherine-monastery.jpg",
+                category: "historical",
+                rating: 4.6,
+                description: "Ancient monastery at the foot of Mount Sinai, housing priceless religious artifacts and manuscripts.",
+                description_it: "Antico monastero ai piedi del Monte Sinai, che ospita inestimabili artefatti religiosi e manoscritti.",
+                highlights: ["Burning Bush", "Ancient icons", "Religious manuscripts", "Byzantine architecture"],
+                highlights_it: ["Bush Ardente", "Icone antiche", "Manoscritti religiosi", "Architettura bizantina"],
+                best_time: "Morning",
+                best_time_it: "Mattina",
+                duration: "2-3 hours",
+                duration_it: "2-3 ore",
+                price_range: "$15 - $25",
+                price_range_it: "$15 - $25",
+                location: "Near Mount Sinai",
+                location_it: "Vicino al Monte Sinai",
+                tips: ["Dress modestly", "Check opening hours", "Combine with Mount Sinai trip"],
+                tips_it: ["Vestiti modestamente", "Controlla gli orari di apertura", "Combina con visita al Monte Sinai"]
+                },
+                {
+                    id: 7,
+                    name: "Nabq Protected Area",
+                    name_it: "Area Protetta Nabq",
+                    image: "nabq-bay.jpg",
+                    category: "nature family",
+                    rating: 4.3,
+                    description: "Protected coastal area with mangrove forests, coral reefs, and diverse bird species.",
+                    description_it: "Area costiera protetta con foreste di mangrovie, barriere coralline e specie di uccelli diverse.",
+                    highlights: ["Mangrove forests", "Bird watching", "Snorkeling spots", "Nature trails"],
+                    highlights_it: ["Foreste di mangrovie", "Osservazione uccelli", "Spots per snorkeling", "Sentieri naturalistici"],
+                    best_time: "Early morning or late afternoon",
+                    best_time_it: "Prima mattina o tardo pomeriggio",
+                    duration: "Half day",
+                    duration_it: "Mezza giornata",
+                    price_range: "$10 - $30",
+                    price_range_it: "$10 - $30",
+                    location: "25km north of Sharm",
+                    location_it: "25km a nord di Sharm",
+                    tips: ["Bring binoculars", "Wear comfortable shoes", "Perfect for nature lovers"],
+                    tips_it: ["Porta binocolo", "Indossa scarpe comode", "Perfetto per amanti della natura"]
+                },
+                {
+                    id: 8,
+                    name: "Cleo Park",
+                    name_it: "Cleo Park",
+                    image: "naama-bay.jpg",
+                    category: "entertainment family",
+                    rating: 4.2,
+                    description: "Water park themed around ancient Egypt with slides, pools, and family-friendly attractions.",
+                    description_it: "Parco acquatico a tema antico Egitto con scivoli, piscine e attrazioni adatte alle famiglie.",
+                    highlights: ["Pharaoh's slides", "Wave pool", "Kids' area", "Lazy river"],
+                    highlights_it: ["Scivoli del Faraone", "Piscina con onde", "Area bambini", "Fiume pigro"],
+                    best_time: "Morning to afternoon",
+                    best_time_it: "Mattina al pomeriggio",
+                    duration: "Full day",
+                    duration_it: "Giornata intera",
+                    price_range: "$25 - $40",
+                    price_range_it: "$25 - $40",
+                    location: "Near Naama Bay",
+                    location_it: "Vicino a Naama Bay",
+                    tips: ["Bring sunscreen and towels", "Arrive early", "Check height restrictions"],
+                    tips_it: ["Porta crema solare e asciugamani", "Arriva presto", "Controlla le restrizioni di altezza"]
+                },
+                {
+                    id: 9,
+                    name: "Terrazzina Beach",
+                    name_it: "Spiaggia Terrazzina",
+                    image: "naama-bay.jpg",
+                    category: "beach entertainment",
+                    rating: 4.4,
+                    description: "Trendy beach club with restaurant, bar, and water sports activities in a relaxed atmosphere.",
+                    description_it: "Beach club alla moda con ristorante, bar e attività sportive acquatiche in un'atmosfera rilassata.",
+                    highlights: ["Beach bar", "Water sports", "Sunset views", "Live music"],
+                    highlights_it: ["Bar sulla spiaggia", "Sport acquatici", "Viste al tramonto", "Musica dal vivo"],
+                    best_time: "Afternoon to sunset",
+                    best_time_it: "Pomeriggio fino al tramonto",
+                    duration: "Half day",
+                    duration_it: "Mezza giornata",
+                    price_range: "$15 - $35",
+                    price_range_it: "$15 - $35",
+                    location: "Naama Bay area",
+                    location_it: "Area Naama Bay",
+                    tips: ["Book sunbeds in advance", "Try the cocktails", "Stay for sunset"],
+                    tips_it: ["Prenota lettini in anticipo", "Prova i cocktail", "Resta per il tramonto"]
+                }
+            ];
+            
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            // Load attractions
+            const attractionsContainer = document.getElementById('attractionsGrid');
+            attractionsContainer.innerHTML = attractions.map(attraction => `
+                <div class="card fade-in attraction-item" data-category="${attraction.category}">
+                    <img src="images/${attraction.image}" alt="${currentLang === 'it' ? attraction.name_it : attraction.name}" class="card-img">
+                    <div class="card-body">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-sm);">
+                            <h3 class="card-title">${currentLang === 'it' ? attraction.name_it : attraction.name}</h3>
+                            <span class="attraction-price">${attraction.price_range}</span>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: var(--spacing-sm); color: var(--text-light); font-size: 0.9rem;">
+                            <i class="fas fa-star" style="color: var(--accent-color); margin-right: 2px;"></i>
+                            <span style="margin-right: var(--spacing-sm);">${attraction.rating}</span>
+                            <i class="fas fa-clock" style="margin-right: 4px;"></i>
+                            <span>${currentLang === 'it' ? attraction.duration_it : attraction.duration}</span>
+                        </div>
+                        
+                        <p class="card-text">${currentLang === 'it' ? attraction.description_it : attraction.description}</p>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <strong style="font-size: 0.9rem; color: var(--text-light);">
+                                <span data-en="Highlights:" data-it="Punti Salienti:">Highlights:</span>
+                            </strong>
+                            <div style="margin-top: var(--spacing-xs);">
+                                ${(currentLang === 'it' && attraction.highlights_it ? attraction.highlights_it : attraction.highlights).slice(0, 3).map(highlight => 
+                                    `<span style="background: var(--bg-light); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; margin-right: 4px;">${highlight}</span>`
+                                ).join('')}
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-sm); font-size: 0.85rem; color: var(--text-light);">
+                            <div>
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>${currentLang === 'it' ? attraction.location_it : attraction.location}</span>
+                            </div>
+                            <div>
+                                <i class="fas fa-sun"></i>
+                                <span>${currentLang === 'it' ? attraction.best_time_it : attraction.best_time}</span>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block view-details-btn" 
+                                data-attraction-id="${attraction.id}">
+                            <i class="fas fa-info-circle" style="margin-right: 6px;"></i>
+                            <span data-en="View Details" data-it="Vedi Dettagli">View Details</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Trigger fade-in animation
+            setTimeout(() => {
+                document.querySelectorAll('.fade-in').forEach(el => el.classList.add('visible'));
+            }, 100);
+            
+            // Add detail button handlers
+            document.querySelectorAll('.view-details-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const attractionId = this.dataset.attractionId;
+                    openAttractionModal(attractionId);
+                });
+            });
+        }
+        
+        function openAttractionModal(attractionId) {
+            const attractions = [
+                {
+                    id: 1,
+                    name: "Naama Bay Beach",
+                    name_it: "Spiaggia di Naama Bay",
+                    image: "naama-bay.jpg",
+                    category: "beach family entertainment",
+                    rating: 4.6,
+                    description: "The most popular beach in Sharm El Sheikh with crystal clear waters, perfect for swimming and snorkeling.",
+                    description_it: "La spiaggia più popolare di Sharm El Sheikh con acque cristalline, perfetta per nuotare e fare snorkeling.",
+                    highlights: ["White sand beach", "Coral reef snorkeling", "Water sports", "Beach clubs"],
+                    highlights_it: ["Spiaggia di sabbia bianca", "Snorkeling nella barriera corallina", "Sport acquatici", "Beach club"],
+                    best_time: "Morning to sunset",
+                    best_time_it: "Mattina fino al tramonto",
+                    duration: "Half day",
+                    duration_it: "Mezza giornata",
+                    price_range: "Free - $20",
+                    price_range_it: "Gratuito - $20",
+                    location: "Naama Bay",
+                    location_it: "Naama Bay",
+                    tips: ["Bring sunscreen", "Arrive early for best spots", "Try the local beach cafes"],
+                    tips_it: ["Porta crema solare", "Arriva presto per i migliori posti", "Prova i caffè locali sulla spiaggia"],
+                    activities: ["Swimming", "Snorkeling", "Jet skiing", "Parasailing", "Beach volleyball"],
+                    activities_it: ["Nuoto", "Snorkeling", "Jet ski", "Parasailing", "Pallavolo sulla spiaggia"],
+                    facilities: ["Sunbeds", "Restaurants", "Restrooms", "Showers", "Changing rooms"],
+                    facilities_it: ["Lettini", "Ristoranti", "Bagni", "Docce", "Spogliatoi"]
+                },
+                {
+                    id: 2,
+                    name: "Ras Mohammed National Park",
+                    name_it: "Parco Nazionale Ras Mohammed",
+                    image: "ras-mohammed.jpg",
+                    category: "nature beach",
+                    rating: 4.8,
+                    description: "Egypt's first national park featuring pristine coral reefs, mangrove forests, and diverse marine life.",
+                    description_it: "Il primo parco nazionale d'Egitto con barriere coralline incontaminate, foreste di mangrovie e vita marina diversificata.",
+                    highlights: ["World-class diving", "Mangrove channel", "Magic Lake", "Shark Observatory"],
+                    highlights_it: ["Immersioni di classe mondiale", "Canale delle mangrovie", "Lago Magico", "Osservatorio degli Squali"],
+                    best_time: "Early morning",
+                    best_time_it: "Prima mattina",
+                    duration: "Full day",
+                    duration_it: "Giornata intera",
+                    price_range: "$25 - $50",
+                    price_range_it: "$25 - $50",
+                    location: "30km south of Sharm",
+                    location_it: "30km a sud di Sharm",
+                    tips: ["Book diving trips in advance", "Bring underwater camera", "Wear reef-safe sunscreen"],
+                    tips_it: ["Prenota le immersioni in anticipo", "Porta fotocamera subacquea", "Indossa crema solare sicura per la barriera"],
+                    activities: ["Scuba diving", "Snorkeling", "Wildlife watching", "Photography", "Hiking"],
+                    activities_it: ["Immersioni subacquee", "Snorkeling", "Osservazione fauna", "Fotografia", "Escursionismo"],
+                    facilities: ["Visitor center", "Restrooms", "Picnic areas", "Parking"],
+                    facilities_it: ["Centro visitatori", "Bagni", "Aree picnic", "Parcheggio"]
+                }
+            ];
+            
+            const attraction = attractions.find(a => a.id == attractionId);
+            if (!attraction) return;
+            
+            const currentLang = localStorage.getItem('language') || 'en';
+            const modal = document.getElementById('attractionModal');
+            const modalTitle = document.getElementById('attractionModalTitle');
+            const modalContent = document.getElementById('attractionModalContent');
+            
+            modalTitle.textContent = currentLang === 'it' ? attraction.name_it : attraction.name;
+            
+            modalContent.innerHTML = `
+                <img src="images/${attraction.image}" alt="${currentLang === 'it' ? attraction.name_it : attraction.name}" 
+                     style="width: 100%; height: 300px; object-fit: cover; border-radius: var(--border-radius); margin-bottom: var(--spacing-md);">
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-md);">
+                    <div style="display: flex; align-items: center;">
+                        <i class="fas fa-star" style="color: var(--accent-color); margin-right: 4px;"></i>
+                        <span style="font-weight: 600;">${attraction.rating}</span>
+                    </div>
+                    <span class="attraction-price" style="font-size: 1.1rem; font-weight: 600;">${attraction.price_range}</span>
+                </div>
+                
+                <p style="margin-bottom: var(--spacing-md); line-height: 1.6;">
+                    ${currentLang === 'it' ? attraction.description_it : attraction.description}
+                </p>
+                
+                <div style="margin-bottom: var(--spacing-md);">
+                    <h4 style="margin-bottom: var(--spacing-sm); color: var(--primary-color);">
+                        <span data-en="Highlights" data-it="Punti Salienti">Highlights</span>
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--spacing-sm);">
+                        ${(currentLang === 'it' && attraction.highlights_it ? attraction.highlights_it : attraction.highlights).map(highlight => `
+                            <div style="display: flex; align-items: center; padding: var(--spacing-xs); background: var(--bg-light); border-radius: var(--border-radius);">
+                                <i class="fas fa-check" style="color: var(--success-color); margin-right: 8px;"></i>
+                                <span>${highlight}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-md); margin-bottom: var(--spacing-md);">
+                    <div>
+                        <h5 style="margin-bottom: var(--spacing-xs); color: var(--text-light);">
+                            <i class="fas fa-clock" style="margin-right: 6px;"></i>
+                            <span data-en="Best Time" data-it="Miglior Momento">Best Time</span>
+                        </h5>
+                        <p>${currentLang === 'it' ? attraction.best_time_it : attraction.best_time}</p>
+                    </div>
+                    <div>
+                        <h5 style="margin-bottom: var(--spacing-xs); color: var(--text-light);">
+                            <i class="fas fa-map-marker-alt" style="margin-right: 6px;"></i>
+                            <span data-en="Location" data-it="Posizione">Location</span>
+                        </h5>
+                        <p>${currentLang === 'it' ? attraction.location_it : attraction.location}</p>
+                    </div>
+                </div>
+                
+                <div style="margin-bottom: var(--spacing-md);">
+                    <h4 style="margin-bottom: var(--spacing-sm); color: var(--primary-color);">
+                        <span data-en="Visitor Tips" data-it="Consigli per Visitatori">Visitor Tips</span>
+                    </h4>
+                    <div style="background: var(--bg-light); padding: var(--spacing-md); border-radius: var(--border-radius);">
+                        ${(currentLang === 'it' && attraction.tips_it ? attraction.tips_it : attraction.tips).map(tip => `
+                            <div style="display: flex; align-items: flex-start; margin-bottom: var(--spacing-xs);">
+                                <i class="fas fa-lightbulb" style="color: var(--accent-color); margin-right: 8px; margin-top: 2px;"></i>
+                                <span>${tip}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                
+                ${attraction.activities ? `
+                <div style="margin-bottom: var(--spacing-md);">
+                    <h4 style="margin-bottom: var(--spacing-sm); color: var(--primary-color);">
+                        <span data-en="Activities" data-it="Attività">Activities</span>
+                    </h4>
+                    <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-xs);">
+                        ${(currentLang === 'it' && attraction.activities_it ? attraction.activities_it : attraction.activities).map(activity => `
+                            <span style="background: var(--secondary-color); color: white; padding: 4px 8px; border-radius: 16px; font-size: 0.85rem;">
+                                ${activity}
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
+                
+                ${attraction.facilities ? `
+                <div style="margin-bottom: var(--spacing-md);">
+                    <h4 style="margin-bottom: var(--spacing-sm); color: var(--primary-color);">
+                        <span data-en="Facilities" data-it="Servizi">Facilities</span>
+                    </h4>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--spacing-xs);">
+                        ${(currentLang === 'it' && attraction.facilities_it ? attraction.facilities_it : attraction.facilities).map(facility => `
+                            <div style="display: flex; align-items: center;">
+                                <i class="fas fa-check-circle" style="color: var(--success-color); margin-right: 6px;"></i>
+                                <span>${facility}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+                ` : ''}
+                
+                <div style="text-align: center; padding-top: var(--spacing-md); border-top: 1px solid var(--border-color);">
+                    <button class="btn btn-primary" onclick="closeAttractionModal()">
+                        <i class="fas fa-times" style="margin-right: 6px;"></i>
+                        <span data-en="Close" data-it="Chiudi">Close</span>
+                    </button>
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+            
+            // Re-trigger language update for modal content
+            setTimeout(() => {
+                updateLanguage();
+            }, 100);
+        }
+        
+        function closeAttractionModal() {
+            document.getElementById('attractionModal').style.display = 'none';
+        }
+        
+        // Modal event listeners
+        document.getElementById('attractionModalClose').addEventListener('click', function() {
+            closeAttractionModal();
+        });
+        
+        // Close modal when clicking outside
+        document.getElementById('attractionModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAttractionModal();
+            }
+        });
+    </script>
+</body>
+</html>

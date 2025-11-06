@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservation - Patrizia Stays</title>
+    <meta name="description" content="Book your stay at Patrizia Stays with our easy 4-step reservation process. Secure online booking with instant confirmation.">
+    
+    <!-- Fonts and Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-brand">Patrizia Stays</a>
+            
+            <button class="mobile-toggle" id="mobileToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <ul class="navbar-nav" id="navbarNav">
+                <li><a href="index.html" class="nav-link" data-en="Home" data-it="Casa">Home</a></li>
+                <li><a href="apartments.html" class="nav-link" data-en="Apartments" data-it="Appartamenti">Apartments</a></li>
+                <li><a href="excursions.html" class="nav-link" data-en="Excursions" data-it="Escursioni">Excursions</a></li>
+                <li><a href="dining.html" class="nav-link" data-en="Dining" data-it="Ristorazione">Dining</a></li>
+                <li><a href="to-visit.html" class="nav-link" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></li>
+                <li><a href="reservation.html" class="nav-link active" data-en="Book Now" data-it="Prenota Ora">Book Now</a></li>
+            </ul>
+            
+            <div class="language-switcher" id="languageSwitcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="it">IT</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="section" style="padding-top: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; text-align: center;">
+        <div class="container">
+            <h1 data-en="Make a Reservation" data-it="Fai una Prenotazione">Make a Reservation</h1>
+            <p data-en="Complete your booking in 4 simple steps" data-it="Completa la tua prenotazione in 4 semplici passaggi">
+                Complete your booking in 4 simple steps
+            </p>
+        </div>
+    </section>
+
+    <!-- Reservation Progress -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="step-indicator" id="stepIndicator">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <div class="step-label" data-en="Select Dates" data-it="Seleziona Date">Select Dates</div>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <div class="step-label" data-en="Choose Apartment" data-it="Scegli Appartamento">Choose Apartment</div>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <div class="step-label" data-en="Guest Details" data-it="Dettagli Ospite">Guest Details</div>
+                </div>
+                <div class="step" data-step="4">
+                    <div class="step-number">4</div>
+                    <div class="step-label" data-en="Review & Pay" data-it="Rivedi e Paga">Review & Pay</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Form Container -->
+    <section class="section">
+        <div class="container">
+            <div class="reservation-container">
+                <!-- Step 1: Select Dates -->
+                <div class="reservation-step active" id="step1">
+                    <h2 data-en="Select Your Dates" data-it="Seleziona le Tue Date">Select Your Dates</h2>
+                    
+                    <div class="form-group">
+                        <label data-en="Check-in Date" data-it="Data di Check-in">Check-in Date</label>
+                        <input type="date" class="form-control" id="checkInDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Check-out Date" data-it="Data di Check-out">Check-out Date</label>
+                        <input type="date" class="form-control" id="checkOutDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Number of Nights" data-it="Numero di Notti">Number of Nights</label>
+                        <input type="number" class="form-control" id="nightsCount" readonly value="0">
+                    </div>
+                    
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button class="calendar-nav" id="prevMonth">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <h3 id="calendarMonth"></h3>
+                            <button class="calendar-nav" id="nextMonth">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="calendar-grid" id="calendarGrid">
+                            <!-- Calendar will be generated here -->
+                        </div>
+                    </div>
+                    
+                    <div class="step-navigation">
+                        <button class="btn btn-primary" id="step1Next">
+                            <span data-en="Next: Choose Apartment" data-it="Prossimo: Scegli Appartamento">Next: Choose Apartment</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Choose Apartment -->
+                <div class="reservation-step" id="step2">
+                    <h2 data-en="Choose Your Apartment" data-it="Scegli il Tuo Appartamento">Choose Your Apartment</h2>
+                    
+                    <div class="apartments-grid" id="apartmentsGrid">
+                        <!-- Apartments will be loaded dynamically -->
+                    </div>
+                    
+                    <div class="step-navigation">
+                        <button class="btn btn-secondary" id="step2Prev">
+                            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                            <span data-en="Back to Dates" data-it="Torna alle Date">Back to Dates</span>
+                        </button>
+                        <button class="btn btn-primary" id="step2Next">
+                            <span data-en="Next: Guest Details" data-it="Prossimo: Dettagli Ospite">Next: Guest Details</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Guest Details -->
+                <div class="reservation-step" id="step3">
+                    <h2 data-en="Guest Information" data-it="Informazioni Ospite">Guest Information</h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label data-en="First Name" data-it="Nome">First Name</label>
+                            <input type="text" class="form-control" id="firstName" required>
+                        </div>
+                        <div class="form-group">
+                            <label data-en="Last Name" data-it="Cognome">Last Name</label>
+                            <input type="text" class="form-control" id="lastName" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Email Address" data-it="Indirizzo Email">Email Address</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Phone Number" data-it="Numero di Telefono">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Number of Guests" data-it="Numero di Ospiti">Number of Guests</label>
+                        <select class="form-control" id="guestCount">
+                            <option value="1">1 Guest</option>
+                            <option value="2">2 Guests</option>
+                            <option value="3">3 Guests</option>
+                            <option value="4">4 Guests</option>
+                            <option value="5">5 Guests</option>
+                            <option value="6">6 Guests</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label data-en="Special Requests" data-it="Richieste Speciali">Special Requests</label>
+                        <textarea class="form-control" id="specialRequests" rows="3" 
+                                  data-en-placeholder="Any special requirements or requests..." 
+                                  data-it-placeholder="Eventuali requisiti o richieste speciali..."
+                                  style="resize: vertical;"></textarea>
+                    </div>
+                    
+                    <div class="step-navigation">
+                        <button class="btn btn-secondary" id="step3Prev">
+                            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                            <span data-en="Back to Apartments" data-it="Torna agli Appartamenti">Back to Apartments</span>
+                        </button>
+                        <button class="btn btn-primary" id="step3Next">
+                            <span data-en="Next: Review & Pay" data-it="Prossimo: Rivedi e Paga">Next: Review & Pay</span>
+                            <i class="fas fa-arrow-right" style="margin-left: 8px;"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Review & Pay -->
+                <div class="reservation-step" id="step4">
+                    <h2 data-en="Review Your Booking" data-it="Rivedi la Tua Prenotazione">Review Your Booking</h2>
+                    
+                    <div class="booking-summary">
+                        <div class="summary-section">
+                            <h4 data-en="Booking Details" data-it="Dettagli Prenotazione">Booking Details</h4>
+                            <div class="summary-item">
+                                <span data-en="Apartment:" data-it="Appartamento:">Apartment:</span>
+                                <span id="summaryApartment">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span data-en="Check-in:" data-it="Check-in:">Check-in:</span>
+                                <span id="summaryCheckIn">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span data-en="Check-out:" data-it="Check-out:">Check-out:</span>
+                                <span id="summaryCheckOut">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span data-en="Nights:" data-it="Notti:">Nights:</span>
+                                <span id="summaryNights">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span data-en="Guests:" data-it="Ospiti:">Guests:</span>
+                                <span id="summaryGuests">-</span>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-section">
+                            <h4 data-en="Guest Information" data-it="Informazioni Ospite">Guest Information</h4>
+                            <div class="summary-item">
+                                <span data-en="Name:" data-it="Nome:">Name:</span>
+                                <span id="summaryName">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span data-en="Email:" data-it="Email:">Email:</span>
+                                <span id="summaryEmail">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span data-en="Phone:" data-it="Telefono:">Phone:</span>
+                                <span id="summaryPhone">-</span>
+                            </div>
+                        </div>
+                        
+                        <div class="summary-section">
+                            <h4 data-en="Pricing" data-it="Prezzi">Pricing</h4>
+                            <div class="summary-item">
+                                <span data-en="Nightly Rate:" data-it="Tariffa Notturna:">Nightly Rate:</span>
+                                <span id="summaryRate">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span data-en="Subtotal:" data-it="Subtotale:">Subtotal:</span>
+                                <span id="summarySubtotal">-</span>
+                            </div>
+                            <div class="summary-item">
+                                <span data-en="Service Fee (10%):" data-it="Tassa di Servizio (10%):">Service Fee (10%):</span>
+                                <span id="summaryFee">-</span>
+                            </div>
+                            <div class="summary-item total">
+                                <span data-en="Total:" data-it="Totale:">Total:</span>
+                                <span id="summaryTotal">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-section">
+                        <h4 data-en="Payment Method" data-it="Metodo di Pagamento">Payment Method</h4>
+                        <div class="payment-methods">
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="credit-card" checked>
+                                <div class="payment-method-content">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span data-en="Credit Card" data-it="Carta di Credito">Credit Card</span>
+                                </div>
+                            </label>
+                            <label class="payment-method">
+                                <input type="radio" name="paymentMethod" value="paypal">
+                                <div class="payment-method-content">
+                                    <i class="fab fa-paypal"></i>
+                                    <span>PayPal</span>
+                                </div>
+                            </label>
+                        </div>
+                        
+                        <div id="creditCardForm">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-en="Card Number" data-it="Numero Carta">Card Number</label>
+                                    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456">
+                                </div>
+                                <div class="form-group" style="width: 100px;">
+                                    <label data-en="CVV" data-it="CVV">CVV</label>
+                                    <input type="text" class="form-control" id="cvv" placeholder="123">
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label data-en="Expiry Month" data-it="Mese di Scadenza">Expiry Month</label>
+                                    <select class="form-control" id="expiryMonth">
+                                        <option value="">MM</option>
+                                        <option value="01">01</option>
+                                        <option value="02">02</option>
+                                        <option value="03">03</option>
+                                        <option value="04">04</option>
+                                        <option value="05">05</option>
+                                        <option value="06">06</option>
+                                        <option value="07">07</option>
+                                        <option value="08">08</option>
+                                        <option value="09">09</option>
+                                        <option value="10">10</option>
+                                        <option value="11">11</option>
+                                        <option value="12">12</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label data-en="Expiry Year" data-it="Anno di Scadenza">Expiry Year</label>
+                                    <select class="form-control" id="expiryYear">
+                                        <option value="">YYYY</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="step-navigation">
+                        <button class="btn btn-secondary" id="step4Prev">
+                            <i class="fas fa-arrow-left" style="margin-right: 8px;"></i>
+                            <span data-en="Back to Details" data-it="Torna ai Dettagli">Back to Details</span>
+                        </button>
+                        <button class="btn btn-success" id="completeBooking">
+                            <i class="fas fa-check" style="margin-right: 8px;"></i>
+                            <span data-en="Complete Booking" data-it="Completa Prenotazione">Complete Booking</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Booking Summary Sidebar -->
+            <div class="booking-sidebar">
+                <div class="sidebar-card">
+                    <h3 data-en="Booking Summary" data-it="Riepilogo Prenotazione">Booking Summary</h3>
+                    <div id="sidebarSummary">
+                        <p data-en="Please select dates to see pricing" data-it="Seleziona le date per vedere i prezzi">Please select dates to see pricing</p>
+                    </div>
+                </div>
+                
+                <div class="sidebar-card" id="sidebarApartment" style="display: none;">
+                    <h4 data-en="Selected Apartment" data-it="Appartamento Selezionato">Selected Apartment</h4>
+                    <div id="sidebarApartmentDetails"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 data-en="Patrizia Stays" data-it="Patrizia Stays">Patrizia Stays</h4>
+                    <p data-en="Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences." data-it="Vivi il lusso a Sharm El Sheikh con i nostri appartamenti premium ed esperienze curate.">
+                        Experience luxury living in Sharm El Sheikh with our premium apartments and curated experiences.
+                    </p>
+                    <div style="margin-top: var(--spacing-md);">
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-facebook fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-instagram fa-lg"></i>
+                        </a>
+                        <a href="#" style="margin-right: var(--spacing-sm); color: var(--secondary-color);">
+                            <i class="fab fa-tripadvisor fa-lg"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Quick Links" data-it="Collegamenti Rapidi">Quick Links</h4>
+                    <p><a href="apartments.html" data-en="Apartments" data-it="Appartamenti">Apartments</a></p>
+                    <p><a href="excursions.html" data-en="Excursions" data-it="Escursioni">Excursions</a></p>
+                    <p><a href="dining.html" data-en="Dining" data-it="Ristorazione">Dining</a></p>
+                    <p><a href="to-visit.html" data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</a></p>
+                    <p><a href="reservation.html" data-en="Book Now" data-it="Prenota Ora">Book Now</a></p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Contact Info" data-it="Informazioni di Contatto">Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +20 100 123 4567</p>
+                    <p><i class="fas fa-envelope"></i> info@patriziastays.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i>
+                        <span data-en="Naama Bay, Sharm El Sheikh, Egypt" data-it="Naama Bay, Sharm El Sheikh, Egitto">
+                            Naama Bay, Sharm El Sheikh, Egypt
+                        </span>
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-en="Newsletter" data-it="Newsletter">Newsletter</h4>
+                    <p data-en="Subscribe to get special offers and updates." data-it="Iscriviti per ricevere offerte speciali e aggiornamenti.">
+                        Subscribe to get special offers and updates.
+                    </p>
+                    <form style="margin-top: var(--spacing-md);">
+                        <input type="email" placeholder="Your email" class="form-control" style="margin-bottom: var(--spacing-sm);" data-en-placeholder="Your email" data-it-placeholder="La tua email">
+                        <button type="submit" class="btn btn-primary btn-block" data-en="Subscribe" data-it="Iscriviti">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Patrizia Stays. 
+                    <span data-en="All rights reserved." data-it="Tutti i diritti riservati.">
+                        All rights reserved.
+                    </span>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/reservation.js"></script>
+    <script>
+        // Initialize reservation system
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeReservation();
+        });
+        
+        function initializeReservation() {
+            // Set minimum date to today
+            const today = new Date().toISOString().split('T')[0];
+            document.getElementById('checkInDate').min = today;
+            document.getElementById('checkOutDate').min = today;
+            
+            // Initialize calendar
+            initializeCalendar();
+            
+            // Load available apartments
+            loadAvailableApartments();
+            
+            // Set up event listeners
+            setupReservationEventListeners();
+        }
+        
+        function initializeCalendar() {
+            const currentDate = new Date();
+            const currentMonth = currentDate.getMonth();
+            const currentYear = currentDate.getFullYear();
+            
+            generateCalendar(currentYear, currentMonth);
+            
+            document.getElementById('calendarMonth').textContent = 
+                currentDate.toLocaleString('default', { month: 'long', year: 'numeric' });
+        }
+        
+        function generateCalendar(year, month) {
+            const calendarGrid = document.getElementById('calendarGrid');
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+            
+            // Clear existing calendar
+            calendarGrid.innerHTML = '';
+            
+            // Add day headers
+            const dayHeaders = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+            dayHeaders.forEach(day => {
+                const header = document.createElement('div');
+                header.className = 'calendar-header-day';
+                header.textContent = day;
+                calendarGrid.appendChild(header);
+            });
+            
+            // Add empty cells for days before month starts
+            for (let i = 0; i < firstDay; i++) {
+                const emptyDay = document.createElement('div');
+                emptyDay.className = 'calendar-day empty';
+                calendarGrid.appendChild(emptyDay);
+            }
+            
+            // Add days of the month
+            for (let day = 1; day <= daysInMonth; day++) {
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day';
+                dayElement.textContent = day;
+                dayElement.dataset.date = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+                
+                // Check if date is in the past
+                const dateStr = dayElement.dataset.date;
+                const today = new Date().toISOString().split('T')[0];
+                if (dateStr < today) {
+                    dayElement.classList.add('disabled');
+                } else {
+                    dayElement.addEventListener('click', function() {
+                        selectDate(this.dataset.date);
+                    });
+                }
+                
+                calendarGrid.appendChild(dayElement);
+            }
+        }
+        
+        function selectDate(date) {
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            
+            if (!checkInDate || (checkInDate && checkOutDate)) {
+                // Set as check-in date
+                document.getElementById('checkInDate').value = date;
+                document.getElementById('checkOutDate').value = '';
+                updateCalendarSelection();
+            } else if (date > checkInDate) {
+                // Set as check-out date
+                document.getElementById('checkOutDate').value = date;
+                updateCalendarSelection();
+                updateNightsCount();
+                updateSidebarSummary();
+            }
+        }
+        
+        function updateCalendarSelection() {
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            
+            // Remove previous selections
+            document.querySelectorAll('.calendar-day').forEach(day => {
+                day.classList.remove('selected', 'range');
+            });
+            
+            if (checkInDate) {
+                const checkInElement = document.querySelector(`[data-date="${checkInDate}"]`);
+                if (checkInElement) {
+                    checkInElement.classList.add('selected');
+                }
+            }
+            
+            if (checkOutDate) {
+                const checkOutElement = document.querySelector(`[data-date="${checkOutDate}"]`);
+                if (checkOutElement) {
+                    checkOutElement.classList.add('selected');
+                }
+                
+                // Highlight range
+                if (checkInDate && checkOutDate) {
+                    const startDate = new Date(checkInDate);
+                    const endDate = new Date(checkOutDate);
+                    const currentDate = new Date(startDate);
+                    
+                    while (currentDate < endDate) {
+                        currentDate.setDate(currentDate.getDate() + 1);
+                        const dateStr = currentDate.toISOString().split('T')[0];
+                        const dateElement = document.querySelector(`[data-date="${dateStr}"]`);
+                        if (dateElement && dateStr !== checkOutDate) {
+                            dateElement.classList.add('range');
+                        }
+                    }
+                }
+            }
+        }
+        
+        function updateNightsCount() {
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            
+            if (checkInDate && checkOutDate) {
+                const start = new Date(checkInDate);
+                const end = new Date(checkOutDate);
+                const nights = Math.ceil((end - start) / (1000 * 60 * 60 * 24));
+                document.getElementById('nightsCount').value = nights;
+            } else {
+                document.getElementById('nightsCount').value = 0;
+            }
+        }
+        
+        function loadAvailableApartments() {
+            const apartments = [
+                {
+                    id: 1,
+                    name: "Sea View Deluxe",
+                    name_it: "Vista Mare Deluxe",
+                    image: "apartment1.jpg",
+                    price: 120,
+                    capacity: 4,
+                    bedrooms: 2,
+                    bathrooms: 2,
+                    amenities: ["Sea view", "Balcony", "WiFi", "Kitchen", "AC"],
+                    amenities_it: ["Vista mare", "Balcone", "WiFi", "Cucina", "Aria condizionata"],
+                    description: "Luxurious sea view apartment with modern amenities and private balcony.",
+                    description_it: "Lussuoso appartamento con vista mare, comfort moderni e balcone privato."
+                },
+                {
+                    id: 2,
+                    name: "Garden Paradise",
+                    name_it: "Paradiso del Giardino",
+                    image: "apartment2.jpg",
+                    price: 95,
+                    capacity: 3,
+                    bedrooms: 1,
+                    bathrooms: 1,
+                    amenities: ["Garden view", "Terrace", "WiFi", "Kitchen", "Pool access"],
+                    amenities_it: ["Vista giardino", "Terrazza", "WiFi", "Cucina", "Accesso piscina"],
+                    description: "Cozy apartment with beautiful garden views and direct pool access.",
+                    description_it: "Accogliente appartamento con bellissima vista giardino e accesso diretto alla piscina."
+                },
+                {
+                    id: 3,
+                    name: "Executive Suite",
+                    name_it: "Suite Esecutiva",
+                    image: "apartment3.jpg",
+                    price: 150,
+                    capacity: 6,
+                    bedrooms: 3,
+                    bathrooms: 2,
+                    amenities: ["City view", "Balcony", "WiFi", "Full kitchen", "Gym access"],
+                    amenities_it: ["Vista città", "Balcone", "WiFi", "Cucina completa", "Accesso palestra"],
+                    description: "Spacious executive suite perfect for families or business travelers.",
+                    description_it: "Spaziosa suite esecutiva perfetta per famiglie o viaggiatori d'affari."
+                },
+                {
+                    id: 4,
+                    name: "Beachfront Villa",
+                    name_it: "Villa Fronte Spiaggia",
+                    image: "apartment4.jpg",
+                    price: 200,
+                    capacity: 8,
+                    bedrooms: 4,
+                    bathrooms: 3,
+                    amenities: ["Beach access", "Private pool", "WiFi", "Kitchen", "BBQ area"],
+                    amenities_it: ["Accesso spiaggia", "Piscina privata", "WiFi", "Cucina", "Area BBQ"],
+                    description: "Stunning beachfront villa with private pool and direct beach access.",
+                    description_it: "Stupefacente villa fronte spiaggia con piscina privata e accesso diretto alla spiaggia."
+                }
+            ];
+            
+            const currentLang = localStorage.getItem('language') || 'en';
+            
+            const container = document.getElementById('apartmentsGrid');
+            container.innerHTML = apartments.map(apartment => `
+                <div class="apartment-card" data-apartment-id="${apartment.id}">
+                    <img src="images/${apartment.image}" alt="${currentLang === 'it' ? apartment.name_it : apartment.name}" class="apartment-img">
+                    <div class="apartment-content">
+                        <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: var(--spacing-sm);">
+                            <h3 class="apartment-title">${currentLang === 'it' ? apartment.name_it : apartment.name}</h3>
+                            <span class="apartment-price">$${apartment.price}/night</span>
+                        </div>
+                        
+                        <div style="display: flex; align-items: center; margin-bottom: var(--spacing-sm); color: var(--text-light); font-size: 0.9rem;">
+                            <span style="margin-right: var(--spacing-sm);">
+                                <i class="fas fa-users"></i> ${apartment.capacity}
+                            </span>
+                            <span style="margin-right: var(--spacing-sm);">
+                                <i class="fas fa-bed"></i> ${apartment.bedrooms}
+                            </span>
+                            <span>
+                                <i class="fas fa-bath"></i> ${apartment.bathrooms}
+                            </span>
+                        </div>
+                        
+                        <p class="apartment-description">${currentLang === 'it' ? apartment.description_it : apartment.description}</p>
+                        
+                        <div style="margin-bottom: var(--spacing-md);">
+                            <strong style="font-size: 0.9rem; color: var(--text-light);">
+                                <span data-en="Amenities:" data-it="Servizi:">Amenities:</span>
+                            </strong>
+                            <div style="margin-top: var(--spacing-xs);">
+                                ${(currentLang === 'it' && apartment.amenities_it ? apartment.amenities_it : apartment.amenities).map(amenity => 
+                                    `<span style="background: var(--bg-light); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; margin-right: 4px;">${amenity}</span>`
+                                ).join('')}
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-primary btn-block select-apartment-btn" data-apartment-id="${apartment.id}">
+                            <span data-en="Select This Apartment" data-it="Seleziona Questo Appartamento">Select This Apartment</span>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+            
+            // Add selection handlers
+            document.querySelectorAll('.select-apartment-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const apartmentId = this.dataset.apartmentId;
+                    selectApartment(apartmentId);
+                });
+            });
+        }
+        
+        function selectApartment(apartmentId) {
+            // Store selected apartment
+            const apartments = [
+                { id: 1, name: "Sea View Deluxe", name_it: "Vista Mare Deluxe", price: 120 },
+                { id: 2, name: "Garden Paradise", name_it: "Paradiso del Giardino", price: 95 },
+                { id: 3, name: "Executive Suite", name_it: "Suite Esecutiva", price: 150 },
+                { id: 4, name: "Beachfront Villa", name_it: "Villa Fronte Spiaggia", price: 200 }
+            ];
+            
+            const apartment = apartments.find(a => a.id == apartmentId);
+            if (apartment) {
+                const currentLang = localStorage.getItem('language') || 'en';
+                const apartmentName = currentLang === 'it' ? apartment.name_it : apartment.name;
+                
+                // Store in session
+                sessionStorage.setItem('selectedApartment', JSON.stringify({
+                    id: apartmentId,
+                    name: apartmentName,
+                    price: apartment.price
+                }));
+                
+                // Update UI
+                document.querySelectorAll('.apartment-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                
+                const selectedCard = document.querySelector(`[data-apartment-id="${apartmentId}"]`);
+                if (selectedCard) {
+                    selectedCard.classList.add('selected');
+                }
+                
+                // Update sidebar
+                updateSidebarApartment(apartmentName, apartment.price);
+            }
+        }
+        
+        function updateSidebarApartment(name, price) {
+            const sidebarApartment = document.getElementById('sidebarApartment');
+            const sidebarApartmentDetails = document.getElementById('sidebarApartmentDetails');
+            
+            sidebarApartment.style.display = 'block';
+            sidebarApartmentDetails.innerHTML = `
+                <h4>${name}</h4>
+                <p style="color: var(--primary-color); font-weight: 600;">$${price}/night</p>
+            `;
+        }
+        
+        function updateSidebarSummary() {
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            const nights = document.getElementById('nightsCount').value;
+            const sidebarSummary = document.getElementById('sidebarSummary');
+            
+            if (checkInDate && checkOutDate && nights > 0) {
+                const currentLang = localStorage.getItem('language') || 'en';
+                sidebarSummary.innerHTML = `
+                    <div class="summary-item">
+                        <span>${currentLang === 'it' ? 'Check-in:' : 'Check-in:'}</span>
+                        <span>${new Date(checkInDate).toLocaleDateString()}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>${currentLang === 'it' ? 'Check-out:' : 'Check-out:'}</span>
+                        <span>${new Date(checkOutDate).toLocaleDateString()}</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>${currentLang === 'it' ? 'Notti:' : 'Nights:'}</span>
+                        <span>${nights}</span>
+                    </div>
+                `;
+            }
+        }
+        
+        function setupReservationEventListeners() {
+            // Calendar navigation
+            document.getElementById('prevMonth').addEventListener('click', function() {
+                const currentText = document.getElementById('calendarMonth').textContent;
+                const [month, year] = currentText.split(' ');
+                const date = new Date(`${month} 1, ${year}`);
+                date.setMonth(date.getMonth() - 1);
+                generateCalendar(date.getFullYear(), date.getMonth());
+                document.getElementById('calendarMonth').textContent = 
+                    date.toLocaleString('default', { month: 'long', year: 'numeric' });
+            });
+            
+            document.getElementById('nextMonth').addEventListener('click', function() {
+                const currentText = document.getElementById('calendarMonth').textContent;
+                const [month, year] = currentText.split(' ');
+                const date = new Date(`${month} 1, ${year}`);
+                date.setMonth(date.getMonth() + 1);
+                generateCalendar(date.getFullYear(), date.getMonth());
+                document.getElementById('calendarMonth').textContent = 
+                    date.toLocaleString('default', { month: 'long', year: 'numeric' });
+            });
+            
+            // Date inputs
+            document.getElementById('checkInDate').addEventListener('change', function() {
+                updateCalendarSelection();
+                updateNightsCount();
+                updateSidebarSummary();
+                
+                // Update check-out minimum date
+                const checkInDate = this.value;
+                if (checkInDate) {
+                    const minCheckOut = new Date(checkInDate);
+                    minCheckOut.setDate(minCheckOut.getDate() + 1);
+                    document.getElementById('checkOutDate').min = minCheckOut.toISOString().split('T')[0];
+                }
+            });
+            
+            document.getElementById('checkOutDate').addEventListener('change', function() {
+                updateCalendarSelection();
+                updateNightsCount();
+                updateSidebarSummary();
+            });
+            
+            // Step navigation
+            document.getElementById('step1Next').addEventListener('click', function() {
+                const checkInDate = document.getElementById('checkInDate').value;
+                const checkOutDate = document.getElementById('checkOutDate').value;
+                
+                if (!checkInDate || !checkOutDate) {
+                    const currentLang = localStorage.getItem('language') || 'en';
+                    alert(currentLang === 'it' ? 'Seleziona entrambe le date' : 'Please select both dates');
+                    return;
+                }
+                
+                goToStep(2);
+            });
+            
+            document.getElementById('step2Prev').addEventListener('click', function() {
+                goToStep(1);
+            });
+            
+            document.getElementById('step2Next').addEventListener('click', function() {
+                const selectedApartment = sessionStorage.getItem('selectedApartment');
+                if (!selectedApartment) {
+                    const currentLang = localStorage.getItem('language') || 'en';
+                    alert(currentLang === 'it' ? 'Seleziona un appartamento' : 'Please select an apartment');
+                    return;
+                }
+                goToStep(3);
+            });
+            
+            document.getElementById('step3Prev').addEventListener('click', function() {
+                goToStep(2);
+            });
+            
+            document.getElementById('step3Next').addEventListener('click', function() {
+                const firstName = document.getElementById('firstName').value;
+                const lastName = document.getElementById('lastName').value;
+                const email = document.getElementById('email').value;
+                const phone = document.getElementById('phone').value;
+                
+                if (!firstName || !lastName || !email || !phone) {
+                    const currentLang = localStorage.getItem('language') || 'en';
+                    alert(currentLang === 'it' ? 'Compila tutti i campi obbligatori' : 'Please fill in all required fields');
+                    return;
+                }
+                
+                // Store guest info
+                sessionStorage.setItem('guestInfo', JSON.stringify({
+                    firstName: firstName,
+                    lastName: lastName,
+                    email: email,
+                    phone: phone,
+                    guestCount: document.getElementById('guestCount').value,
+                    specialRequests: document.getElementById('specialRequests').value
+                }));
+                
+                updateReviewSummary();
+                goToStep(4);
+            });
+            
+            document.getElementById('step4Prev').addEventListener('click', function() {
+                goToStep(3);
+            });
+            
+            document.getElementById('completeBooking').addEventListener('click', function() {
+                completeBooking();
+            });
+            
+            // Payment method selection
+            document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+                radio.addEventListener('change', function() {
+                    const creditCardForm = document.getElementById('creditCardForm');
+                    if (this.value === 'credit-card') {
+                        creditCardForm.style.display = 'block';
+                    } else {
+                        creditCardForm.style.display = 'none';
+                    }
+                });
+            });
+        }
+        
+        function goToStep(step) {
+            // Hide all steps
+            document.querySelectorAll('.reservation-step').forEach(s => s.classList.remove('active'));
+            document.querySelectorAll('.step').forEach(s => s.classList.remove('active'));
+            
+            // Show current step
+            document.getElementById(`step${step}`).classList.add('active');
+            document.querySelector(`[data-step="${step}"]`).classList.add('active');
+            
+            // Update progress indicator
+            updateStepIndicator(step);
+        }
+        
+        function updateStepIndicator(step) {
+            document.querySelectorAll('.step').forEach((s, index) => {
+                if (index < step) {
+                    s.classList.add('completed');
+                } else {
+                    s.classList.remove('completed');
+                }
+            });
+        }
+        
+        function updateReviewSummary() {
+            const checkInDate = document.getElementById('checkInDate').value;
+            const checkOutDate = document.getElementById('checkOutDate').value;
+            const nights = document.getElementById('nightsCount').value;
+            const guestInfo = JSON.parse(sessionStorage.getItem('guestInfo') || '{}');
+            const selectedApartment = JSON.parse(sessionStorage.getItem('selectedApartment') || '{}');
+            
+            // Update booking details
+            document.getElementById('summaryApartment').textContent = selectedApartment.name || '-';
+            document.getElementById('summaryCheckIn').textContent = checkInDate ? new Date(checkInDate).toLocaleDateString() : '-';
+            document.getElementById('summaryCheckOut').textContent = checkOutDate ? new Date(checkOutDate).toLocaleDateString() : '-';
+            document.getElementById('summaryNights').textContent = nights || '-';
+            document.getElementById('summaryGuests').textContent = guestInfo.guestCount || '-';
+            
+            // Update guest info
+            document.getElementById('summaryName').textContent = `${guestInfo.firstName || ''} ${guestInfo.lastName || ''}`.trim() || '-';
+            document.getElementById('summaryEmail').textContent = guestInfo.email || '-';
+            document.getElementById('summaryPhone').textContent = guestInfo.phone || '-';
+            
+            // Update pricing
+            const rate = selectedApartment.price || 0;
+            const subtotal = rate * (parseInt(nights) || 0);
+            const fee = subtotal * 0.1;
+            const total = subtotal + fee;
+            
+            document.getElementById('summaryRate').textContent = `$${rate}`;
+            document.getElementById('summarySubtotal').textContent = `$${subtotal}`;
+            document.getElementById('summaryFee').textContent = `$${fee.toFixed(2)}`;
+            document.getElementById('summaryTotal').textContent = `$${total.toFixed(2)}`;
+        }
+        
+        function completeBooking() {
+            const paymentMethod = document.querySelector('input[name="paymentMethod"]:checked').value;
+            
+            if (paymentMethod === 'credit-card') {
+                const cardNumber = document.getElementById('cardNumber').value;
+                const cvv = document.getElementById('cvv').value;
+                const expiryMonth = document.getElementById('expiryMonth').value;
+                const expiryYear = document.getElementById('expiryYear').value;
+                
+                if (!cardNumber || !cvv || !expiryMonth || !expiryYear) {
+                    const currentLang = localStorage.getItem('language') || 'en';
+                    alert(currentLang === 'it' ? 'Compila tutti i dettagli della carta' : 'Please fill in all card details');
+                    return;
+                }
+            }
+            
+            // Generate booking confirmation
+            const bookingData = {
+                bookingId: 'PS' + Date.now(),
+                checkInDate: document.getElementById('checkInDate').value,
+                checkOutDate: document.getElementById('checkOutDate').value,
+                nights: document.getElementById('nightsCount').value,
+                apartment: JSON.parse(sessionStorage.getItem('selectedApartment') || '{}'),
+                guestInfo: JSON.parse(sessionStorage.getItem('guestInfo') || '{}'),
+                total: document.getElementById('summaryTotal').textContent,
+                paymentMethod: paymentMethod,
+                bookingDate: new Date().toISOString()
+            };
+            
+            // Store booking
+            localStorage.setItem('bookingConfirmation', JSON.stringify(bookingData));
+            
+            // Show success message
+            const currentLang = localStorage.getItem('language') || 'en';
+            alert(currentLang === 'it' ? 
+                `Prenotazione confermata! Il tuo numero di prenotazione è: ${bookingData.bookingId}` : 
+                `Booking confirmed! Your booking number is: ${bookingData.bookingId}`
+            );
+            
+            // Redirect to confirmation page or home
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>

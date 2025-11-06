@@ -1,0 +1,606 @@
+/* Patrizia Stays - Responsive Styles */
+
+/* Tablet Styles (768px - 1024px) */
+@media screen and (max-width: 1024px) {
+    /* Typography Adjustments */
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.75rem; }
+    h3 { font-size: 1.375rem; }
+    
+    /* Container Adjustments */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* Navigation Adjustments */
+    .navbar-container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    .navbar-nav {
+        gap: var(--spacing-md);
+    }
+    
+    /* Hero Section */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: var(--spacing-sm);
+    }
+    
+    /* Grid Adjustments */
+    .grid-2 { grid-template-columns: 1fr; }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    
+    /* Card Adjustments */
+    .card-img {
+        height: 180px;
+    }
+    
+    /* Gallery Adjustments */
+    .gallery-main {
+        height: 300px;
+    }
+    
+    /* Booking Widget */
+    .booking-widget {
+        position: relative;
+        top: 0;
+        margin-top: var(--spacing-lg);
+    }
+    
+    /* Modal Adjustments */
+    .modal-content {
+        max-width: 90vw;
+        margin: var(--spacing-md);
+    }
+    
+    /* Steps Indicator */
+    .steps {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .steps::before {
+        display: none;
+    }
+    
+    /* Footer */
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-md);
+    }
+}
+
+/* Reservation layout and apartment image responsiveness */
+.apartment-img {
+    height: 220px;
+}
+
+@media screen and (max-width: 576px) {
+    .apartment-img { height: 200px; }
+}
+
+@media screen and (min-width: 577px) and (max-width: 991px) {
+    .apartment-img { height: 230px; }
+}
+
+@media screen and (min-width: 992px) {
+    .apartment-img { height: 260px; }
+}
+
+/* Two-column grid for reservation page without changing HTML */
+.container:has(.reservation-container) {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+}
+
+@media screen and (min-width: 992px) {
+    .container:has(.reservation-container) {
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+    }
+}
+
+/* Mobile Styles (< 768px) */
+@media screen and (max-width: 768px) {
+    /* Typography Adjustments */
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1.25rem; }
+    h4 { font-size: 1.125rem; }
+    
+    /* Spacing Adjustments */
+    :root {
+        --spacing-xs: 0.25rem;
+        --spacing-sm: 0.5rem;
+        --spacing-md: 1rem;
+        --spacing-lg: 1.5rem;
+        --spacing-xl: 2rem;
+        --spacing-xxl: 2.5rem;
+    }
+    
+    /* Navigation Mobile */
+    .navbar-container {
+        height: 60px;
+    }
+    
+    .mobile-toggle {
+        display: block;
+    }
+    
+    .navbar-nav {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-white);
+        flex-direction: column;
+        padding: var(--spacing-md);
+        box-shadow: 0 4px 12px var(--shadow-medium);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition-medium);
+    }
+    
+    .navbar-nav.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: var(--spacing-sm) 0;
+        border-bottom: 1px solid #E9ECEF;
+    }
+    
+    .navbar-nav .nav-link:last-child {
+        border-bottom: none;
+    }
+    
+    /* Language Switcher Mobile */
+    .language-switcher {
+        position: absolute;
+        top: 100%;
+        right: var(--spacing-md);
+        background-color: var(--bg-white);
+        padding: var(--spacing-sm);
+        border-radius: var(--radius-md);
+        box-shadow: 0 2px 8px var(--shadow-light);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition-medium);
+    }
+    
+    .language-switcher.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    /* Hero Section Mobile */
+    .hero {
+        height: 80vh;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .hero-buttons .btn {
+        width: 100%;
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    /* Wave Effect Mobile */
+    .wave {
+        height: 60px;
+    }
+    
+    /* Grid Mobile */
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+    
+    /* Card Mobile */
+    .card-img {
+        height: 160px;
+    }
+    
+    .card-body {
+        padding: var(--spacing-sm);
+    }
+    
+    /* Filter System Mobile */
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-btn {
+        width: 100%;
+        margin-bottom: var(--spacing-xs);
+    }
+    
+    /* Gallery Mobile */
+    .gallery-main {
+        height: 250px;
+    }
+    
+    .gallery-thumbs {
+        gap: var(--spacing-xs);
+    }
+    
+    .gallery-thumb {
+        width: 60px;
+        height: 45px;
+    }
+    
+    /* Modal Mobile */
+    .modal-content {
+        max-width: 95vw;
+        margin: var(--spacing-sm);
+        border-radius: var(--radius-md);
+    }
+    
+    .modal-header {
+        padding: var(--spacing-sm);
+    }
+    
+    .modal-body {
+        padding: var(--spacing-sm);
+    }
+    
+    /* Forms Mobile */
+    .form-control {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+    
+    /* Calendar Mobile */
+    .calendar {
+        padding: var(--spacing-sm);
+    }
+    
+    .calendar-grid {
+        gap: 2px;
+    }
+    
+    .calendar-day {
+        font-size: 0.875rem;
+    }
+    
+    /* Booking Widget Mobile */
+    .booking-widget {
+        padding: var(--spacing-sm);
+    }
+    
+    .booking-price {
+        font-size: 1.25rem;
+    }
+    
+    /* Steps Mobile */
+    .step-title {
+        font-size: 0.75rem;
+    }
+    
+    /* Footer Mobile */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--spacing-lg);
+    }
+    
+    .footer-section h4 {
+        margin-bottom: var(--spacing-sm);
+    }
+    
+    /* Utility Classes Mobile */
+    .mobile-hidden {
+        display: none !important;
+    }
+    
+    .mobile-full {
+        width: 100%;
+    }
+    
+    .mobile-text-center {
+        text-align: center;
+    }
+    
+    /* Section Padding Mobile */
+    .section {
+        padding: var(--spacing-xl) 0;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    /* Container Mobile */
+    .container {
+        padding: 0 var(--spacing-sm);
+    }
+    
+    /* Button Mobile */
+    .btn {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: 1rem;
+    }
+    
+    /* Animation Performance */
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Small Mobile Styles (< 480px) */
+@media screen and (max-width: 480px) {
+    /* Typography */
+    h1 { font-size: 1.5rem; }
+    h2 { font-size: 1.375rem; }
+    
+    /* Hero */
+    .hero-title {
+        font-size: 1.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.875rem;
+    }
+    
+    /* Cards */
+    .card-img {
+        height: 140px;
+    }
+    
+    /* Gallery */
+    .gallery-main {
+        height: 200px;
+    }
+    
+    /* Calendar */
+    .calendar-day {
+        font-size: 0.75rem;
+    }
+    
+    /* Booking */
+    .booking-price {
+        font-size: 1.125rem;
+    }
+    
+    /* Modal */
+    .modal-content {
+        margin: var(--spacing-xs);
+    }
+    
+    /* Forms */
+    .form-control {
+        font-size: 14px;
+    }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Optimize images for high DPI */
+    .card-img,
+    .gallery-main,
+    .gallery-thumb {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Print Styles */
+@media print {
+    /* Hide navigation and interactive elements */
+    .navbar,
+    .mobile-toggle,
+    .language-switcher,
+    .filters,
+    .modal,
+    .booking-widget,
+    .hero-buttons {
+        display: none !important;
+    }
+    
+    /* Optimize for print */
+    body {
+        font-size: 12pt;
+        line-height: 1.4;
+        color: #000;
+    }
+    
+    .section {
+        padding: 1rem 0;
+    }
+    
+    .card {
+        box-shadow: none;
+        border: 1px solid #ccc;
+        break-inside: avoid;
+    }
+    
+    .card-img {
+        max-height: 200px;
+    }
+    
+    a {
+        color: #000;
+        text-decoration: underline;
+    }
+    
+    .btn {
+        background: none !important;
+        color: #FFFFFF !important;
+        border: 1px solid #FFFFFF !important;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .wave {
+        animation: none;
+    }
+    
+    .hero-title,
+    .hero-subtitle,
+    .hero-buttons {
+        animation: none;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* Sharm-inspired dark scheme (avoid pure black) */
+        --text-dark: #EAF3F6;
+        --text-light: #B9CCD6;
+        --bg-light: #0E3A59; /* deep azure */
+        --bg-white: #0B2F4A; /* deep blue */
+        --shadow-light: rgba(10, 47, 74, 0.3);
+        --shadow-medium: rgba(10, 47, 74, 0.4);
+        --shadow-heavy: rgba(10, 47, 74, 0.5);
+    }
+    
+    body {
+        background-color: var(--bg-white);
+        color: var(--text-dark);
+    }
+    
+    .navbar {
+        background-color: var(--bg-white);
+    }
+    
+    .card {
+        background-color: var(--bg-white);
+    }
+    
+    .form-control {
+        background-color: var(--bg-white);
+        border-color: #495057;
+        color: var(--text-dark);
+    }
+    
+    .modal-content {
+        background-color: var(--bg-white);
+    }
+    
+    .booking-widget {
+        background-color: var(--bg-white);
+    }
+    
+    .calendar {
+        background-color: var(--bg-white);
+    }
+    
+    .footer {
+        background-color: #0B2F4A;
+    }
+}
+
+/* Landscape Orientation */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        height: 100vh;
+        min-height: 400px;
+    }
+    
+    .hero-title {
+        font-size: 1.75rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .hero-buttons {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .wave {
+        height: 40px;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .btn:hover {
+        transform: none;
+    }
+    
+    .card:hover {
+        transform: none;
+    }
+    
+    .filter-btn:hover {
+        background-color: transparent;
+        color: var(--text-dark);
+    }
+    
+    .filter-btn.active:hover {
+        background-color: var(--primary-color);
+        color: var(--bg-white);
+    }
+    
+    /* Increase touch targets */
+    .btn,
+    .filter-btn,
+    .calendar-day,
+    .gallery-thumb,
+    .lang-btn,
+    .mobile-toggle,
+    .calendar-nav,
+    .modal-close {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .nav-link {
+        padding: var(--spacing-sm) 0;
+    }
+    
+    .form-control {
+        min-height: 44px;
+    }
+}
