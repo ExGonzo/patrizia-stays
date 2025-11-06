@@ -1,26 +1,27 @@
 /* Patrizia Stays - Main Styles */
 
 /* Import Google Fonts */
-@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200;300;400;500;600&family=Playfair+Display:wght@400;500;600;700&family=Cormorant+Garamond:wght@500;600;700&display=swap');
 
 /* CSS Variables - Design System */
 :root {
     /* Colors */
-    /* Coherent palette focused on readability */
-    --primary-color: #1E90FF; /* azure blue */
-    --secondary-color: #D9A55A; /* desert sand */
-    --accent-color: #2EC4B6; /* turquoise */
-    --text-dark: #1B2A41; /* deep navy for body text */
-    --text-light: #5C6B80; /* muted slate for secondary text */
-    --bg-light: #F0F6FB; /* soft light background panels */
-    --bg-white: #F7FAFD; /* site background: very light azure */
+    /* New palette */
+    /* #D9AF32 #BFAF80 #F2EDE4 #F2C6AC #D9665B */
+    --primary-color: #D9AF32; /* gold */
+    --secondary-color: #BFAF80; /* taupe */
+    --accent-color: #D9665B; /* coral accent */
+    --text-dark: #4A3B2A; /* deep brown for body text */
+    --text-light: #BFAF80; /* taupe for secondary text */
+    --bg-light: rgba(242, 237, 228, 0.12); /* off-white tint */
+    --bg-white: #FFFFFF; /* lightest background: pure white */
     --shadow-light: rgba(0, 0, 0, 0.12);
     --shadow-medium: rgba(0, 0, 0, 0.18);
     --shadow-heavy: rgba(0, 0, 0, 0.25);
     
     /* Typography */
     --font-family: 'Mulish', sans-serif;
-    --font-heading: 'Playfair Display', serif;
+    --font-heading: 'Cormorant Garamond', serif;
     --font-light: 300;
     --font-regular: 400;
     --font-medium: 500;
@@ -64,6 +65,8 @@ body {
     line-height: 1.6;
     color: var(--text-dark);
     background-color: var(--bg-white);
+    background-image: none;
+    background-attachment: initial;
 }
 
 /* Homepage background aligned with global palette */
@@ -84,6 +87,9 @@ h3 { font-size: 1.5rem; }
 h4 { font-size: 1.25rem; }
 h5 { font-size: 1.125rem; }
 h6 { font-size: 1rem; }
+
+/* Elegant heading refinement */
+.section-title, h1, h2, h3 { letter-spacing: 0.02em; }
 
 p {
     margin-bottom: var(--spacing-sm);
@@ -125,7 +131,7 @@ a:hover {
 }
 
 .btn-primary:hover {
-    background-color: #1877E8; /* darker primary */
+    background-color: #B6911E; /* deeper gold for clear hover */
     color: #FFFFFF;
     transform: translateY(-2px);
     box-shadow: 0 8px 18px rgba(23, 59, 77, 0.25);
@@ -137,7 +143,7 @@ a:hover {
 }
 
 .btn-secondary:hover {
-    background-color: #C49045;
+    background-color: #9C8E62; /* slightly darker taupe */
     color: #FFFFFF;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px var(--shadow-medium);
@@ -149,7 +155,7 @@ a:hover {
 }
 
 .btn-accent:hover {
-    background-color: #24AF9F;
+    background-color: #BD4E46; /* deepen to dark coral */
     color: #FFFFFF;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px var(--shadow-medium);
@@ -215,9 +221,13 @@ img {
 }
 
 .booking-sidebar {
-    position: sticky;
-    top: 100px;
-    align-self: start;
+    /* Centered sidebar card on reservation page */
+    position: static;
+    top: auto;
+    align-self: center;
+    max-width: 800px;
+    width: 100%;
+    margin: var(--spacing-lg) auto 0;
 }
 
 .card-body {
@@ -263,6 +273,123 @@ img {
     color: var(--primary-color);
 }
 
+/* Reservation page – centered, collapsible step panels */
+.reservation-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+    align-items: center;
+}
+
+.reservation-step {
+    display: none;
+    width: 100%;
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 16px var(--shadow-light);
+    border: 1px solid rgba(23, 59, 77, 0.12);
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.reservation-step.active {
+    display: block;
+}
+
+.reservation-step h2 {
+    margin-bottom: var(--spacing-md);
+}
+
+.reservation-step .form-group,
+.reservation-step .form-row {
+    max-width: 640px;
+    margin: 0 auto var(--spacing-md);
+    text-align: left;
+}
+
+.reservation-step .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+}
+
+@media screen and (max-width: 576px) {
+    .reservation-step .form-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+.step-navigation {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-md);
+}
+
+.apartments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: var(--spacing-md);
+    align-items: start;
+}
+
+.sidebar-card {
+    background-color: var(--bg-white);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 16px var(--shadow-light);
+    border: 1px solid rgba(23, 59, 77, 0.12);
+    padding: var(--spacing-lg);
+}
+
+.step-indicator {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+}
+
+/* Stylish centered divider line (doesn't touch ends) */
+:root {
+    --divider-color: rgba(217, 175, 50, 0.35); /* from #D9AF32 with transparency */
+}
+
+.divider {
+    height: 1px;
+    width: min(800px, 80%);
+    margin: var(--spacing-xl) auto;
+    background: linear-gradient(to right,
+        transparent 0%,
+        var(--divider-color) 10%,
+        var(--divider-color) 90%,
+        transparent 100%
+    );
+}
+
+/* Automatically insert a divider before each subsequent section */
+.section:not(:first-of-type)::before {
+    content: "";
+    display: block;
+    height: 1px;
+    width: min(800px, 80%);
+    margin: var(--spacing-xl) auto;
+    background: linear-gradient(to right,
+        transparent 0%,
+        var(--divider-color) 10%,
+        var(--divider-color) 90%,
+        transparent 100%
+    );
+}
+
+/* Utility: remove divider line where needed */
+.section.no-divider::before { display: none; }
+
+/* Remove the first divider line directly below hero/banner */
+.hero + .section::before,
+.section-banner + .section::before {
+    display: none;
+}
+
 .navbar-nav {
     display: flex;
     list-style: none;
@@ -273,6 +400,7 @@ img {
     font-weight: var(--font-medium);
     color: var(--text-dark);
     transition: var(--transition-fast);
+    font-size: 1.1rem;
 }
 
 .nav-link:hover,
@@ -287,7 +415,7 @@ img {
 
 .lang-btn {
     padding: var(--spacing-xs) var(--spacing-sm);
-    border: 1px solid rgba(27, 42, 65, 0.15);
+    border: 1px solid rgba(217, 175, 50, 0.25);
     background-color: transparent;
     border-radius: var(--radius-sm);
     font-size: 0.875rem;
@@ -303,6 +431,10 @@ img {
     border-color: var(--primary-color);
 }
 
+/* Contextual button sizing */
+div .btn { padding: 0.75rem 1.25rem; font-size: 1rem; }
+a.btn { padding: 0.5rem 0.9rem; font-size: 0.9rem; }
+
 /* Mobile Navigation */
 .mobile-toggle {
     display: none;
@@ -316,8 +448,8 @@ img {
 /* Hero Section */
 .hero {
     position: relative;
-    height: 62vh;
-    background-image: url('../images/banner.gif');
+    height: 75vh;
+    background-image: url('../images/ras-mohammed.jpg');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -330,15 +462,15 @@ img {
 
 /* Responsive hero sizing */
 @media screen and (max-width: 992px) {
-  .hero { height: 56vh; }
-  .hero-title { font-size: 2.6rem; }
-  .hero-subtitle { font-size: 1rem; }
+  .hero { height: 70vh; }
+  .hero-title { font-size: 2.8rem; }
+  .hero-subtitle { font-size: 1.15rem; }
 }
 
 @media screen and (max-width: 600px) {
-  .hero { height: 52vh; }
-  .hero-title { font-size: 2.3rem; }
-  .hero-subtitle { font-size: 0.95rem; }
+  .hero { height: 65vh; }
+  .hero-title { font-size: 2.5rem; }
+  .hero-subtitle { font-size: 1.05rem; }
 }
 
 /* Soft overlay to keep text readable on hero image */
@@ -346,7 +478,12 @@ img {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(135deg, rgba(30, 144, 255, 0.35), rgba(46, 196, 182, 0.30));
+    /* Greece palette overlay */
+    background-image:
+        linear-gradient(180deg, rgba(200, 237, 242, 0.60), rgba(200, 237, 242, 0.60)),
+        linear-gradient(135deg, rgba(143, 203, 217, 0.30), rgba(143, 203, 217, 0.30)),
+        linear-gradient(90deg, rgba(33, 140, 165, 0.22), rgba(33, 140, 165, 0.22)),
+        radial-gradient(900px 500px at 20% 15%, rgba(11, 158, 217, 0.18), transparent 60%);
     z-index: 0;
 }
 
@@ -358,11 +495,12 @@ img {
     transform: translateX(-50%);
     bottom: -1px;
     width: 120%;
-    height: 140px;
+    height: 90px;
     background: var(--bg-white);
     border-top-left-radius: 100% 80px;
     border-top-right-radius: 100% 80px;
     z-index: 1;
+    box-shadow: 0 10px 24px var(--shadow-medium);
 }
 
 .hero-content {
@@ -372,14 +510,14 @@ img {
 }
 
 .hero-title {
-    font-size: 3.2rem;
+    font-size: 3.6rem;
     font-weight: var(--font-bold);
     margin-bottom: var(--spacing-md);
     animation: fadeInUp 1s ease-out;
 }
 
 .hero-subtitle {
-    font-size: 1.125rem;
+    font-size: 1.3rem;
     margin-bottom: var(--spacing-xl);
     opacity: 0.9;
     animation: fadeInUp 1s ease-out 0.2s both;
@@ -390,6 +528,63 @@ img {
     gap: var(--spacing-md);
     justify-content: center;
     animation: fadeInUp 1s ease-out 0.4s both;
+}
+
+/* Tighten spacing for the first section after hero */
+.hero + .section {
+    padding-top: var(--spacing-md);
+}
+
+/* Reduce gap between banner and the first content section */
+.section-banner + .section {
+    padding-top: var(--spacing-md);
+}
+
+/* Section Banner: apply home hero theme to page headers */
+.section-banner {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFFFFF;
+    padding-top: 100px; /* account for fixed navbar */
+    padding-bottom: calc(var(--spacing-xxl) + 10px);
+    min-height: 320px; /* enlarge banners for non-home pages */
+}
+
+.section-banner::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    /* New palette overlay */
+    background-image:
+        linear-gradient(180deg, rgba(242, 237, 228, 0.60), rgba(242, 237, 228, 0.60)),
+        linear-gradient(135deg, rgba(191, 175, 128, 0.30), rgba(191, 175, 128, 0.30)),
+        linear-gradient(90deg, rgba(242, 198, 172, 0.20), rgba(242, 198, 172, 0.20)),
+        radial-gradient(900px 500px at 20% 15%, rgba(216, 101, 91, 0.18), transparent 60%);
+    z-index: 0;
+}
+
+.section-banner::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -1px;
+    width: 120%;
+    height: 70px;
+    background: var(--bg-white);
+    border-top-left-radius: 100% 60px;
+    border-top-right-radius: 100% 60px;
+    z-index: 1;
+    box-shadow: 0 10px 24px var(--shadow-medium);
+}
+
+.section-banner .container {
+    position: relative;
+    z-index: 2;
 }
 
 /* Wave Effect */
@@ -453,18 +648,26 @@ img {
 .filters {
     display: flex;
     flex-wrap: wrap;
-    gap: var(--spacing-sm);
-    margin-bottom: var(--spacing-lg);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
     justify-content: center;
+    align-items: center;
 }
 
 .filter-btn {
-    padding: var(--spacing-xs) var(--spacing-md);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-lg);
     border: 2px solid var(--primary-color);
     background-color: transparent;
-    border-radius: var(--radius-md);
+    border-radius: var(--radius-lg);
     font-family: var(--font-family);
     font-weight: var(--font-medium);
+    font-size: 1rem;
+    line-height: 1.2;
+    min-height: 44px;
+    min-width: 140px;
     cursor: pointer;
     transition: var(--transition-fast);
     color: var(--text-dark);
@@ -488,12 +691,13 @@ img {
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 2000;
     animation: fadeIn 0.3s ease;
+    /* Ensure content centers when display is set to flex inline */
+    align-items: center;
+    justify-content: center;
 }
 
 .modal.active {
     display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 .modal-content {
@@ -806,7 +1010,7 @@ img {
 
 /* Footer */
 .footer {
-    background-color: #0B2F4A; /* deep Aegean blue */
+    background-color: var(--primary-color); /* Moda primary for consistent palette */
     color: #FFFFFF;
     padding: var(--spacing-xl) 0;
     margin-top: var(--spacing-xxl);
@@ -964,7 +1168,144 @@ img {
     .gallery-thumb { width: 64px; height: 48px; }
 }
 .footer {
-    background-color: #0B2F4A; /* deep Aegean blue */
+    background-color: var(--primary-color); /* Moda primary */
     color: #FFFFFF;
 }
 .footer a { color: #FFFFFF; }
+/* =============================================
+   Palette Redesign and Hover Enhancements (2025)
+   Applies new pastel palette, button gradients,
+   improved icon hover, and card depth.
+   ============================================= */
+
+/* New palette reaffirmed for consistency in lower overrides */
+:root {
+    --primary-color: #D9AF32;
+    --secondary-color: #BFAF80;
+    --accent-color: #D9665B;
+    --text-dark: #4A3B2A;
+    --text-light: #BFAF80;
+    --bg-white: #FFFFFF;
+    --bg-light: rgba(242, 237, 228, 0.12);
+}
+
+/* Background using Greece palette layers */
+body {
+    background-image: none;
+}
+
+/* Buttons: gradient fills and stronger hover */
+.btn {
+    box-shadow: 0 6px 14px rgba(31, 46, 60, 0.15);
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(31, 46, 60, 0.22);
+}
+
+.btn-primary {
+    background-image: linear-gradient(135deg, #D9AF32, #BFAF80);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: #FFFFFF;
+}
+
+.btn-primary:hover {
+    filter: brightness(0.98) saturate(1.05);
+}
+
+.btn-secondary {
+    background-image: linear-gradient(135deg, #F2C6AC, #D9665B);
+    color: #FFFFFF;
+}
+
+.btn-secondary:hover {
+    filter: brightness(0.98) saturate(1.05);
+}
+
+.btn-accent {
+    background-image: linear-gradient(135deg, #D9665B, #D9AF32);
+    color: #FFFFFF;
+}
+
+.btn-accent:hover {
+    filter: brightness(0.98) saturate(1.05);
+}
+
+.btn-outline {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
+.btn-outline:hover {
+    background-image: linear-gradient(135deg, #D9AF32, #BFAF80);
+    color: #FFFFFF;
+}
+
+/* Filter buttons pick up palette and gain subtle depth */
+.filter-btn {
+    border-color: var(--primary-color);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-image: linear-gradient(135deg, #D9AF32, #BFAF80);
+    color: #FFFFFF;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(31, 46, 60, 0.18);
+}
+
+/* Icon hover and depth using drop-shadows */
+i[class^="fa"], i[class*=" fa-"] {
+    transition: transform var(--transition-fast),
+                filter var(--transition-fast),
+                color var(--transition-fast);
+    filter: drop-shadow(0 2px 2px rgba(31, 46, 60, 0.15));
+}
+
+i[class^="fa"]:hover, i[class*=" fa-"]:hover {
+    transform: translateY(-2px) scale(1.04);
+    filter: drop-shadow(0 6px 10px rgba(31, 46, 60, 0.28));
+    color: var(--accent-color);
+}
+
+/* Apartment preview icons slightly larger and more prominent */
+.apartment-card .fa-bed,
+.apartment-card .fa-bath {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+}
+
+/* Card hover: unify depth feeling */
+.card:hover,
+.apartment-card:hover,
+.excursion-card:hover,
+.restaurant-card:hover,
+.attraction-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 28px rgba(31, 46, 60, 0.22);
+}
+
+/* Banner overlays updated to palette harmony */
+.hero::before,
+.section-banner::before {
+    background-image:
+        linear-gradient(180deg, rgba(242, 237, 228, 0.45), rgba(242, 237, 228, 0.45)),
+        linear-gradient(135deg, rgba(191, 175, 128, 0.28), rgba(191, 175, 128, 0.28)),
+        linear-gradient(90deg, rgba(242, 198, 172, 0.22), rgba(242, 198, 172, 0.22)),
+        radial-gradient(900px 500px at 20% 15%, rgba(216, 101, 91, 0.18), transparent 60%);
+}
+
+/* Language switcher active aligns with new primary */
+.lang-btn:hover,
+.lang-btn.active {
+    background-image: linear-gradient(135deg, #D9AF32, #BFAF80);
+    color: #FFFFFF;
+    border-color: transparent;
+}
+
+/* Calendar day selected aligns with new primary */
+.calendar-day.selected {
+    background-image: linear-gradient(135deg, #D9AF32, #BFAF80);
+    color: #FFFFFF;
+}

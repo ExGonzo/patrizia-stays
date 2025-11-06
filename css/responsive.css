@@ -23,11 +23,11 @@
     
     /* Hero Section */
     .hero-title {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
     }
     
     .hero-subtitle {
-        font-size: 1.125rem;
+        font-size: 1.25rem;
     }
     
     .hero-buttons {
@@ -107,7 +107,8 @@
 
 @media screen and (min-width: 992px) {
     .container:has(.reservation-container) {
-        grid-template-columns: 2fr 1fr;
+        grid-template-columns: 1fr;
+        justify-items: center;
         align-items: start;
     }
 }
@@ -196,11 +197,11 @@
     }
     
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
     }
     
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     .hero-buttons {
@@ -371,11 +372,11 @@
     
     /* Hero */
     .hero-title {
-        font-size: 1.5rem;
+        font-size: 1.7rem;
     }
     
     .hero-subtitle {
-        font-size: 0.875rem;
+        font-size: 1rem;
     }
     
     /* Cards */
@@ -489,14 +490,14 @@
 /* Dark Mode Support */
 @media (prefers-color-scheme: dark) {
     :root {
-        /* Sharm-inspired dark scheme (avoid pure black) */
-        --text-dark: #EAF3F6;
-        --text-light: #B9CCD6;
-        --bg-light: #0E3A59; /* deep azure */
-        --bg-white: #0B2F4A; /* deep blue */
-        --shadow-light: rgba(10, 47, 74, 0.3);
-        --shadow-medium: rgba(10, 47, 74, 0.4);
-        --shadow-heavy: rgba(10, 47, 74, 0.5);
+        /* Keep the light scheme for page backgrounds as requested */
+        --text-dark: #025159;
+        --text-light: #3F858C;
+        --bg-light: #C4EEF2;
+        --bg-white: #C4EEF2;
+        --shadow-light: rgba(0, 0, 0, 0.12);
+        --shadow-medium: rgba(0, 0, 0, 0.18);
+        --shadow-heavy: rgba(0, 0, 0, 0.25);
     }
     
     body {
@@ -531,7 +532,7 @@
     }
     
     .footer {
-        background-color: #0B2F4A;
+        background-color: var(--primary-color);
     }
 }
 
@@ -543,11 +544,11 @@
     }
     
     .hero-title {
-        font-size: 1.75rem;
+        font-size: 1.9rem;
     }
     
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
     .hero-buttons {

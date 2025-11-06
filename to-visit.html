@@ -43,7 +43,7 @@
     </nav>
 
     <!-- Page Header -->
-    <section class="section" style="padding-top: 100px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white; text-align: center;">
+    <section class="section section-banner">
         <div class="container">
             <h1 data-en="Places to Visit" data-it="Luoghi da Visitare">Places to Visit</h1>
             <p data-en="Discover the most amazing attractions and hidden gems in Sharm El Sheikh" data-it="Scopri le attrazioni più straordinarie e i tesori nascosti di Sharm El Sheikh">
@@ -53,7 +53,7 @@
     </section>
 
     <!-- Attraction Filters -->
-    <section class="section bg-light">
+    <section class="section bg-light no-divider">
         <div class="container">
             <div class="filters" id="attractionFilters">
                 <button class="filter-btn active" data-filter="all" data-en="All Attractions" data-it="Tutte le Attrazioni">All Attractions</button>
@@ -489,6 +489,160 @@
                     activities_it: ["Immersioni subacquee", "Snorkeling", "Osservazione fauna", "Fotografia", "Escursionismo"],
                     facilities: ["Visitor center", "Restrooms", "Picnic areas", "Parking"],
                     facilities_it: ["Centro visitatori", "Bagni", "Aree picnic", "Parcheggio"]
+                },
+                {
+                    id: 3,
+                    name: "Old Market (Sharm El Maya)",
+                    name_it: "Vecchio Mercato (Sharm El Maya)",
+                    image: "old-market.jpg",
+                    category: "shopping historical",
+                    rating: 4.4,
+                    description: "Traditional Egyptian market offering spices, textiles, jewelry, and authentic local experiences.",
+                    description_it: "Mercato egiziano tradizionale che offre spezie, tessuti, gioielli ed esperienze locali autentiche.",
+                    highlights: ["Spice markets", "Traditional crafts", "Local restaurants", "Authentic atmosphere"],
+                    highlights_it: ["Mercati delle spezie", "Artigianato tradizionale", "Ristoranti locali", "Atmosfera autentica"],
+                    best_time: "Evening",
+                    best_time_it: "Sera",
+                    duration: "2-3 hours",
+                    duration_it: "2-3 ore",
+                    price_range: "$10 - $100",
+                    price_range_it: "$10 - $100",
+                    location: "Sharm El Maya",
+                    location_it: "Sharm El Maya",
+                    tips: ["Practice haggling", "Try local street food", "Visit in the evening for best atmosphere"],
+                    tips_it: ["Pratica il contrattare", "Prova il cibo di strada locale", "Visita la sera per la migliore atmosfera"]
+                },
+                {
+                    id: 4,
+                    name: "Soho Square",
+                    name_it: "Soho Square",
+                    image: "naama-bay.jpg",
+                    category: "entertainment shopping family",
+                    rating: 4.5,
+                    description: "Modern entertainment complex with restaurants, shops, ice skating rink, and nightly shows.",
+                    description_it: "Moderno complesso di intrattenimento con ristoranti, negozi, pista di pattinaggio sul ghiaccio e spettacoli serali.",
+                    highlights: ["Ice skating rink", "Fountain shows", "International restaurants", "Shopping outlets"],
+                    highlights_it: ["Pista di pattinaggio sul ghiaccio", "Spettacoli di fontane", "Ristoranti internazionali", "Negozi outlet"],
+                    best_time: "Evening",
+                    best_time_it: "Sera",
+                    duration: "3-4 hours",
+                    duration_it: "3-4 ore",
+                    price_range: "Free - $30",
+                    price_range_it: "Gratuito - $30",
+                    location: "Sinai Grand Resort",
+                    location_it: "Sinai Grand Resort",
+                    tips: ["Check show times in advance", "Try the ice skating", "Great for families"],
+                    tips_it: ["Controlla gli orari degli spettacoli", "Prova il pattinaggio sul ghiaccio", "Ottimo per le famiglie"]
+                },
+                {
+                    id: 5,
+                    name: "Mount Sinai",
+                    name_it: "Monte Sinai",
+                    image: "st-catherine.jpg",
+                    category: "nature historical",
+                    rating: 4.7,
+                    description: "Sacred mountain where Moses received the Ten Commandments, offering spectacular sunrise views.",
+                    description_it: "Montagna sacra dove Mosè ricevette i Dieci Comandamenti, offrendo spettacolari viste all'alba.",
+                    highlights: ["Sunrise trek", "St. Catherine's Monastery", "Sacred significance", "Panoramic views"],
+                    highlights_it: ["Trek all'alba", "Monastero di Santa Caterina", "Significato sacro", "Viste panoramiche"],
+                    best_time: "Night (for sunrise)",
+                    best_time_it: "Notte (per l'alba)",
+                    duration: "Full day",
+                    duration_it: "Giornata intera",
+                    price_range: "$40 - $80",
+                    price_range_it: "$40 - $80",
+                    location: "2 hours from Sharm",
+                    location_it: "2 ore da Sharm",
+                    tips: ["Start climb at 2 AM", "Bring warm clothes", "Hire local guide"],
+                    tips_it: ["Inizia la scalata alle 2 AM", "Porta vestiti caldi", "Assumi guida locale"]
+                },
+                {
+                    id: 6,
+                    name: "St. Catherine's Monastery",
+                    name_it: "Monastero di Santa Caterina",
+                    image: "st-catherine-monastery.jpg",
+                    category: "historical",
+                    rating: 4.6,
+                    description: "Ancient monastery at the foot of Mount Sinai, housing priceless religious artifacts and manuscripts.",
+                    description_it: "Antico monastero ai piedi del Monte Sinai, che ospita inestimabili artefatti religiosi e manoscritti.",
+                    highlights: ["Burning Bush", "Ancient icons", "Religious manuscripts", "Byzantine architecture"],
+                    highlights_it: ["Bush Ardente", "Icone antiche", "Manoscritti religiosi", "Architettura bizantina"],
+                    best_time: "Morning",
+                    best_time_it: "Mattina",
+                    duration: "2-3 hours",
+                    duration_it: "2-3 ore",
+                    price_range: "$15 - $25",
+                    price_range_it: "$15 - $25",
+                    location: "Near Mount Sinai",
+                    location_it: "Vicino al Monte Sinai",
+                    tips: ["Dress modestly", "Check opening hours", "Combine with Mount Sinai trip"],
+                    tips_it: ["Vestiti modestamente", "Controlla gli orari di apertura", "Combina con visita al Monte Sinai"]
+                },
+                {
+                    id: 7,
+                    name: "Nabq Protected Area",
+                    name_it: "Area Protetta Nabq",
+                    image: "nabq-bay.jpg",
+                    category: "nature family",
+                    rating: 4.3,
+                    description: "Protected coastal area with mangrove forests, coral reefs, and diverse bird species.",
+                    description_it: "Area costiera protetta con foreste di mangrovie, barriere coralline e specie di uccelli diverse.",
+                    highlights: ["Mangrove forests", "Bird watching", "Snorkeling spots", "Nature trails"],
+                    highlights_it: ["Foreste di mangrovie", "Osservazione uccelli", "Spots per snorkeling", "Sentieri naturalistici"],
+                    best_time: "Early morning or late afternoon",
+                    best_time_it: "Prima mattina o tardo pomeriggio",
+                    duration: "Half day",
+                    duration_it: "Mezza giornata",
+                    price_range: "$10 - $30",
+                    price_range_it: "$10 - $30",
+                    location: "25km north of Sharm",
+                    location_it: "25km a nord di Sharm",
+                    tips: ["Bring binoculars", "Wear comfortable shoes", "Perfect for nature lovers"],
+                    tips_it: ["Porta binocolo", "Indossa scarpe comode", "Perfetto per amanti della natura"]
+                },
+                {
+                    id: 8,
+                    name: "Cleo Park",
+                    name_it: "Cleo Park",
+                    image: "naama-bay.jpg",
+                    category: "entertainment family",
+                    rating: 4.2,
+                    description: "Water park themed around ancient Egypt with slides, pools, and family-friendly attractions.",
+                    description_it: "Parco acquatico a tema antico Egitto con scivoli, piscine e attrazioni adatte alle famiglie.",
+                    highlights: ["Pharaoh's slides", "Wave pool", "Kids' area", "Lazy river"],
+                    highlights_it: ["Scivoli del Faraone", "Piscina con onde", "Area bambini", "Fiume pigro"],
+                    best_time: "Morning to afternoon",
+                    best_time_it: "Mattina al pomeriggio",
+                    duration: "Full day",
+                    duration_it: "Giornata intera",
+                    price_range: "$25 - $40",
+                    price_range_it: "$25 - $40",
+                    location: "Near Naama Bay",
+                    location_it: "Vicino a Naama Bay",
+                    tips: ["Bring sunscreen and towels", "Arrive early", "Check height restrictions"],
+                    tips_it: ["Porta crema solare e asciugamani", "Arriva presto", "Controlla le restrizioni di altezza"]
+                },
+                {
+                    id: 9,
+                    name: "Terrazzina Beach",
+                    name_it: "Spiaggia Terrazzina",
+                    image: "naama-bay.jpg",
+                    category: "beach entertainment",
+                    rating: 4.4,
+                    description: "Trendy beach club with restaurant, bar, and water sports activities in a relaxed atmosphere.",
+                    description_it: "Beach club alla moda con ristorante, bar e attività sportive acquatiche in un'atmosfera rilassata.",
+                    highlights: ["Beach bar", "Water sports", "Sunset views", "Live music"],
+                    highlights_it: ["Bar sulla spiaggia", "Sport acquatici", "Viste al tramonto", "Musica dal vivo"],
+                    best_time: "Afternoon to sunset",
+                    best_time_it: "Pomeriggio fino al tramonto",
+                    duration: "Half day",
+                    duration_it: "Mezza giornata",
+                    price_range: "$15 - $35",
+                    price_range_it: "$15 - $35",
+                    location: "Naama Bay area",
+                    location_it: "Area Naama Bay",
+                    tips: ["Book sunbeds in advance", "Try the cocktails", "Stay for sunset"],
+                    tips_it: ["Prenota lettini in anticipo", "Prova i cocktail", "Resta per il tramonto"]
                 }
             ];
             

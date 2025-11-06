@@ -651,8 +651,9 @@ function initializeInteractiveHeroBackground() {
 
     // Ensure background image is set (also set in CSS for fallback)
     const cssBg = getComputedStyle(hero).backgroundImage || '';
-    if (!cssBg.includes('banner')) {
-        hero.style.backgroundImage = "url('images/banner.gif')";
+    // Only set a fallback if none is defined by CSS
+    if (!cssBg || cssBg === 'none') {
+        hero.style.backgroundImage = "url('images/ras-mohammed.jpg')";
         hero.style.backgroundSize = 'cover';
         hero.style.backgroundPosition = 'center';
     }
